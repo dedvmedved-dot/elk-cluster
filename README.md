@@ -32,73 +32,8 @@
 ## 2. Архитектура решения
 
 ### Схема: Архитектура ELK Stack
-
-```dot
-digraph ELK_Architecture {
-    label="Архитектура ELK Stack";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.8;
-    ranksep=0.7;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=11];
-    
-    subgraph cluster_sources {
-        label="Источники логов";
-        style=filled;
-        fillcolor="#FCE8E6";
-        fontsize=13;
-        
-        nginx1 [label="nginx-1\n192.168.122.107\nFilebeat\nЛоги: nginx, syslog", fillcolor="#FFCDD2", style=filled];
-        nginx2 [label="nginx-2\n192.168.122.182\nFilebeat\nЛоги: nginx, syslog", fillcolor="#FFCDD2", style=filled];
-        db1 [label="db-1\n192.168.122.189\nFilebeat\nЛоги: PostgreSQL, syslog", fillcolor="#FFCDD2", style=filled];
-    }
-    
-    subgraph cluster_elastic {
-        label="Кластер Elasticsearch";
-        style=filled;
-        fillcolor="#E6F4EA";
-        color="#34A853";
-        fontsize=14;
-        
-        es1 [label="es-node1\n192.168.122.71\nMaster Node\nХранение шардов\nПоиск и агрегация", fillcolor="#A5D6A7", style=filled];
-        es2 [label="es-node2\n192.168.122.72\nData Node\nХранение шардов\nПоиск и агрегация", fillcolor="#A5D6A7", style=filled];
-        es3 [label="es-node3\n192.168.122.73\nData Node\nХранение шардов\nПоиск и агрегация", fillcolor="#A5D6A7", style=filled];
-        
-        es1 -> es2 [label="Репликация\nшардов", dir=both, color="#34A853", penwidth=2];
-        es2 -> es3 [label="Репликация\nшардов", dir=both, color="#34A853", penwidth=2];
-        es3 -> es1 [label="Репликация\nшардов", dir=both, color="#34A853", penwidth=2];
-    }
-    
-    subgraph cluster_kibana {
-        label="Визуализация";
-        style=filled;
-        fillcolor="#FFF3E0";
-        fontsize=13;
-        
-        kibana [label="Kibana\n192.168.122.60:5601\nДашборды\nВизуализация\nПоиск по логам", fillcolor="#FFE0B2", style=filled];
-    }
-    
-    subgraph cluster_user {
-        label="Пользователь";
-        style=filled;
-        fillcolor="#E8F0FE";
-        fontsize=13;
-        
-        user [label="DevOps/Разработчик\nБраузер\nАнализ логов", shape=oval, fillcolor="#BBDEFB", style=filled];
-    }
-    
-    nginx1 -> es1 [label="Отправка\nлогов\nHTTP :9200", color="#EA4335"];
-    nginx2 -> es2 [label="Отправка\nлогов\nHTTP :9200", color="#EA4335"];
-    db1 -> es3 [label="Отправка\nлогов\nHTTP :9200", color="#EA4335"];
-    
-    es1 -> kibana [label="API\n:9200", color="#FB8C00", penwidth=2];
-    kibana -> user [label="HTTP\n:5601", color="#4285F4", penwidth=2];
-}
-```
+![Архитектура ELK Stack](screenshots/ELK_Architecture.svg)
+---
 
 ### Описание архитектуры
 
@@ -115,143 +50,22 @@ digraph ELK_Architecture {
 ## 3. Использованные технологии
 
 ### Схема: Технологический стек
-
-```dot
-digraph TechStack {
-    label="Технологический стек ELK";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.8;
-    ranksep=0.6;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=11];
-    
-    subgraph cluster_iaac {
-        label="Infrastructure as Code";
-        style=filled;
-        fillcolor="#E0E0E0";
-        fontsize=13;
-        
-        tf [label="Terraform 1.12\nСоздание 4 ВМ\nдля ES и Kibana", fillcolor="#BDBDBD", style=filled];
-        ansible [label="Ansible\nРоли: elasticsearch,\nkibana, filebeat", fillcolor="#BDBDBD", style=filled];
-    }
-    
-    subgraph cluster_elk {
-        label="ELK Stack";
-        style=filled;
-        fillcolor="#E6F4EA";
-        fontsize=13;
-        
-        es [label="Elasticsearch 8.12\nРаспределённый\nпоисковый движок\nREST API\nApache Lucene\nШарды и реплики", fillcolor="#A5D6A7", style=filled];
-        kibana [label="Kibana 8.12\nВеб-интерфейс\nДашборды\nDiscover\nCanvas\nTimelion", fillcolor="#A5D6A7", style=filled];
-        filebeat [label="Filebeat 8.12\nЛёгкий агент\nЧтение лог-файлов\nОтправка в ES\nМодули (nginx, psql)", fillcolor="#A5D6A7", style=filled];
-    }
-    
-    subgraph cluster_virt {
-        label="Виртуализация";
-        style=filled;
-        fillcolor="#E8F0FE";
-        fontsize=13;
-        
-        kvm [label="KVM/libvirt\n4 виртуальные\nмашины\nUbuntu 22.04", fillcolor="#BBDEFB", style=filled];
-    }
-    
-    tf -> kvm [style=dotted];
-    ansible -> es [style=dashed];
-    ansible -> kibana [style=dashed];
-    ansible -> filebeat [style=dashed];
-    filebeat -> es [label="отправка\nлогов", color="#EA4335", penwidth=2];
-    es -> kibana [label="API", color="#FB8C00"];
-}
-```
-
+![Технологический стек](screenshots/TechStack.svg)
 ---
 
 ## 4. Создание инфраструктуры: Terraform
 
 ### Схема: Процесс создания ВМ
-
-```dot
-digraph TerraformFlow {
-    label="Создание инфраструктуры ELK";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.6;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    start [label="Старт", shape=oval, fillcolor="#E8F0FE", style=filled];
-    
-    step1 [label="terraform init\nЗагрузка провайдера\nlibvirt 0.7.1", fillcolor="#FCE8E6", style=filled];
-    step2 [label="terraform plan\nПлан: 13 ресурсов\n4 ВМ + диски +\ncloud-init ISO", fillcolor="#E6F4EA", style=filled];
-    step3 [label="terraform apply\nСоздание:\n- es-node1 (2 ГБ, 2 CPU)\n- es-node2 (2 ГБ, 2 CPU)\n- es-node3 (2 ГБ, 2 CPU)\n- kibana (2 ГБ, 2 CPU)\nВсе по 20 ГБ диск", fillcolor="#FFF3E0", style=filled];
-    step4 [label="DHCP-резервации\nПерезапуск libvirtd\nПроверка ping", fillcolor="#FFF3E0", style=filled];
-    
-    end [label="4 ВМ запущены\nДоступны по SSH", shape=oval, fillcolor="#C8E6C9", style=filled];
-    
-    start -> step1;
-    step1 -> step2;
-    step2 -> step3;
-    step3 -> step4;
-    step4 -> end;
-}
-```
-
+![Процесс создания ВМ](screenshots/TerraformFlow.svg)
 ---
 
 ## 5. Настройка Elasticsearch
 
 ### Схема: Кластер Elasticsearch
+![Кластер Elasticsearch](screenshots/ES_Cluster.svg)
+---
 
-```dot
-digraph ES_Cluster {
-    label="Кластер Elasticsearch из 3 нод";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.8;
-    ranksep=0.6;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    subgraph cluster_es_nodes {
-        label="Ноды кластера";
-        style=filled;
-        fillcolor="#E6F4EA";
-        fontsize=13;
-        
-        es1 [label="es-node1\n192.168.122.71:9200\nРоль: Master\nХранит шарды P0, P1\nРеплики R2, R3\nКоординирует кластер", fillcolor="#A5D6A7", style=filled];
-        es2 [label="es-node2\n192.168.122.72:9200\nРоль: Data\nХранит шарды P2, P3\nРеплики R0, R1", fillcolor="#A5D6A7", style=filled];
-        es3 [label="es-node3\n192.168.122.73:9200\nРоль: Data\nХранит шарды P4, P5\nРеплики R0, R1", fillcolor="#A5D6A7", style=filled];
-    }
-    
-    subgraph cluster_shards {
-        label="Распределение шардов индекса logs-*";
-        style=filled;
-        fillcolor="#FFF3E0";
-        fontsize=12;
-        
-        shards [label="Primary Shards (6):\nP0,P1 → es-node1\nP2,P3 → es-node2\nP4,P5 → es-node3\n\nReplica Shards (6):\nR0,R1 → es-node2, es-node3\nR2,R3 → es-node2, es-node3\nR4,R5 → es-node1\n\nВсего: 12 шардов\nСтатус: GREEN", shape=note, fillcolor="#FFE0B2", style=filled];
-    }
-    
-    es1 -> es2 [label="Синхронизация\nшардов", dir=both, color="#34A853"];
-    es2 -> es3 [label="Синхронизация\nшардов", dir=both, color="#34A853"];
-    es3 -> es1 [label="Синхронизация\nшардов", dir=both, color="#34A853"];
-    
-    es1 -> shards;
-    es2 -> shards;
-    es3 -> shards;
-}
-```
+
 
 ### Ключевые настройки elasticsearch.yml
 
@@ -278,46 +92,8 @@ cluster.initial_master_nodes: ["es-node1", "es-node2", "es-node3"]
 ## 6. Настройка Kibana
 
 ### Схема: Взаимодействие Kibana с Elasticsearch
-
-```dot
-digraph KibanaFlow {
-    label="Архитектура Kibana";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.7;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    user [label="Пользователь\nБраузер", shape=oval, fillcolor="#E8F0FE", style=filled];
-    
-    kibana [label="Kibana Server\n192.168.122.60:5601\nNode.js приложение\nREST API клиент", fillcolor="#FFE0B2", style=filled];
-    
-    subgraph cluster_features {
-        label="Возможности Kibana";
-        style=filled;
-        fillcolor="#FFF3E0";
-        fontsize=12;
-        
-        discover [label="Discover\nПоиск и фильтрация\nлогов в реальном\nвремени", fillcolor="#FFE0B2", style=filled];
-        dashboards [label="Dashboards\nВизуализация\nметрик и логов\nГрафики, таблицы", fillcolor="#FFE0B2", style=filled];
-        index_patterns [label="Index Patterns\nlogs-*\nПривязка к\nиндексам ES", fillcolor="#FFE0B2", style=filled];
-    }
-    
-    es [label="Elasticsearch\n:9200\nREST API\nПоиск и агрегация", shape=cylinder, fillcolor="#A5D6A7", style=filled];
-    
-    user -> kibana [label="HTTP\nпорт 5601", color="#4285F4", penwidth=2];
-    kibana -> discover;
-    kibana -> dashboards;
-    kibana -> index_patterns;
-    discover -> es [label="Search API", color="#34A853"];
-    dashboards -> es [label="Aggregation API", color="#34A853"];
-    index_patterns -> es [label="Mapping API", color="#34A853"];
-}
-```
+![Взаимодействие Kibana с Elasticsearch](screenshots/KibanaFlow.svg)
+---
 
 ### Настройка kibana.yml
 
@@ -334,48 +110,8 @@ Kibana подключается ко всем трём нодам Elasticsearch 
 ## 7. Настройка Filebeat
 
 ### Схема: Процесс сбора логов Filebeat
-
-```dot
-digraph FilebeatFlow {
-    label="Процесс сбора и отправки логов Filebeat";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.7;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    subgraph cluster_inputs {
-        label="Inputs (источники)";
-        style=filled;
-        fillcolor="#FCE8E6";
-        fontsize=12;
-        
-        nginx_log [label="/var/log/nginx/\naccess.log\nerror.log\nТеги: nginx", fillcolor="#FFCDD2", style=filled];
-        syslog [label="/var/log/syslog\nСистемные логи\nТеги: system", fillcolor="#FFCDD2", style=filled];
-        psql_log [label="/var/log/postgresql/\npostgresql-*.log\nТеги: postgresql", fillcolor="#FFCDD2", style=filled];
-    }
-    
-    filebeat [label="Filebeat\nЧитает лог-файлы\nОтслеживает позицию\n(registry)\nБуферизация\nОтправка в ES", shape=hexagon, fillcolor="#EA4335", style=filled, fontcolor=white];
-    
-    subgraph cluster_output {
-        label="Output";
-        style=filled;
-        fillcolor="#E6F4EA";
-        fontsize=12;
-        
-        es [label="Elasticsearch\nhosts: es-node1,2,3\nindex: logs-8.12.0-YYYY.MM.DD", shape=cylinder, fillcolor="#A5D6A7", style=filled];
-    }
-    
-    nginx_log -> filebeat;
-    syslog -> filebeat;
-    psql_log -> filebeat;
-    filebeat -> es [label="HTTP\nbulk API", color="#34A853", penwidth=2];
-}
-```
+![Процесс сбора логов Filebeat](screenshots/FilebeatFlow.svg)
+---
 
 ### Конфигурация filebeat.yml
 
@@ -409,38 +145,8 @@ output.elasticsearch:
 ## 8. Путь лога: от источника до визуализации
 
 ### Схема: Полный путь лога
-
-```dot
-digraph LogJourney {
-    label="Путь лога от источника до экрана Kibana";
-    labelloc=t;
-    fontsize=20;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.6;
-    ranksep=0.4;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=9];
-    
-    step1 [label="1. Генерация\nNginx записывает\naccess.log:\n'GET /index.html 200'", fillcolor="#FCE8E6", style=filled];
-    step2 [label="2. Чтение\nFilebeat читает\nлог-файл (inode)\nОбновляет registry\n(позиция в файле)", fillcolor="#FFCDD2", style=filled];
-    step3 [label="3. Буферизация\nFilebeat накапливает\nсобытия в буфере\n(до 2048 событий\nили 5 секунд)", fillcolor="#FFF3E0", style=filled];
-    step4 [label="4. Отправка\nHTTP POST\n/_bulk API\nСжатие gzip\nОтправка в ES", fillcolor="#FFE0B2", style=filled];
-    step5 [label="5. Индексация\nElasticsearch:\n- Парсит JSON\n- Применяет mapping\n- Разбивает на шарды\n- Создаёт реплики", fillcolor="#E6F4EA", style=filled];
-    step6 [label="6. Хранение\nШард P0 → es-node1\nРеплика R0 → es-node2\nДанные защищены\nот отказа ноды", fillcolor="#A5D6A7", style=filled];
-    step7 [label="7. Поиск\nKibana отправляет\nSearch API запрос\nES ищет по всем\nшардам параллельно", fillcolor="#E8F0FE", style=filled];
-    step8 [label="8. Визуализация\nKibana отображает\nлоги в Discover\nФильтры, поиск,\nдашборды", fillcolor="#BBDEFB", style=filled];
-    
-    step1 -> step2;
-    step2 -> step3;
-    step3 -> step4;
-    step4 -> step5;
-    step5 -> step6;
-    step6 -> step7;
-    step7 -> step8;
-}
-```
+![Полный путь лога](screenshots/LogJourney.svg)
+---
 
 ### Временные характеристики
 
@@ -457,47 +163,8 @@ digraph LogJourney {
 ## 9. Проблемы и их решение
 
 ### Схема: Путь через трудности
-
-```dot
-digraph Troubleshooting {
-    label="Хронология проблем при настройке ELK";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.7;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    start [label="Начало: Terraform создал\n4 ВМ для ES + Kibana", shape=oval, fillcolor="#E8F0FE", style=filled];
-    
-    p1 [label="Проблема 1: Репозиторий ES\napt update → 403 Forbidden\nartifacts.elastic.co\nнедоступен", fillcolor="#FFCDD2", style=filled];
-    s1 [label="Решение 1:\nСкачали deb-пакеты\nчерез браузер с VPN\nElasticsearch 8.12.0\nKibana 8.12.0\nFilebeat 8.12.0\nУстановка через dpkg -i", fillcolor="#C8E6C9", style=filled];
-    
-    p2 [label="Проблема 2: Версия ES 7.x\nв Ansible-роли\nУстаревший репозиторий\n7.x уже не поддерживается", fillcolor="#FFCDD2", style=filled];
-    s2 [label="Решение 2:\nПерешли на ES 8.12.0\nОбновили шаблоны\nконфигурации\nДобавили отключение\nsecurity (xpack)", fillcolor="#C8E6C9", style=filled];
-    
-    p3 [label="Проблема 3: nginx-1/2 недоступны\nСтарые ВМ изменили IP\nпосле перезагрузки\nSSH host key mismatch", fillcolor="#FFCDD2", style=filled];
-    s3 [label="Решение 3:\nПерезагрузили nginx ВМ\nПолучили новые IP\nчерез virsh domifaddr\nОчистили known_hosts\nОбновили inventory", fillcolor="#C8E6C9", style=filled];
-    
-    p4 [label="Проблема 4: backend-1/2\nнедоступны (выключены)\nNo route to host", fillcolor="#FFCDD2", style=filled];
-    s4 [label="Решение 4:\nИсключили backend-1/2\nиз inventory\nНастроили Filebeat\nтолько на доступных:\nnginx-1, nginx-2, db-1\nЭтого достаточно\nдля демонстрации", fillcolor="#C8E6C9", style=filled];
-    
-    success [label="ELK Stack работает\nES: 3 ноды, green\nKibana: доступна\nFilebeat: 3 сервера\nЛоги поступают", shape=oval, fillcolor="#A5D6A7", style=filled, penwidth=2];
-    
-    start -> p1;
-    p1 -> s1;
-    s1 -> p2;
-    p2 -> s2;
-    s2 -> p3;
-    p3 -> s3;
-    s3 -> p4;
-    p4 -> s4;
-    s4 -> success;
-}
-```
+![Путь через трудности](screenshots/Troubleshooting.svg)
+---
 
 ### Почему мы не могли собрать кластер?
 
@@ -1130,108 +797,14 @@ curl http://192.168.122.71:9200/_cat/indices?v
 ### Что мы видим в Kibana и как это использовать
 
 ### Схема: Интерфейс Kibana — основные разделы
-
-```dot
-digraph KibanaInterface {
-    label="Интерфейс Kibana — основные разделы";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.7;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    login [label="Вход в Kibana\nhttp://192.168.122.60:5601\n→ Explore on my own", shape=oval, fillcolor="#E8F0FE", style=filled];
-    
-    subgraph cluster_menu {
-        label="Главное меню (≡)";
-        style=filled;
-        fillcolor="#FFF3E0";
-        fontsize=13;
-        
-        discover [label="Discover\nПоиск и просмотр\nлогов в реальном\nвремени", fillcolor="#FFE0B2", style=filled];
-        dashboards [label="Dashboards\nВизуализация\nметрик и графиков", fillcolor="#FFE0B2", style=filled];
-        management [label="Stack Management\nIndex Patterns\nSaved Objects\nAdvanced Settings", fillcolor="#FFE0B2", style=filled];
-        devtools [label="Dev Tools\nConsole (REST API)\nGrok Debugger\nSearch Profiler", fillcolor="#FFE0B2", style=filled];
-    }
-    
-    subgraph cluster_data {
-        label="Источники данных";
-        style=filled;
-        fillcolor="#E6F4EA";
-        fontsize=13;
-        
-        es [label="Elasticsearch\nREST API\n:9200\nИндексы: logs-*", shape=cylinder, fillcolor="#A5D6A7", style=filled];
-    }
-    
-    login -> discover;
-    login -> dashboards;
-    login -> management;
-    login -> devtools;
-    discover -> es [label="Search API", color="#34A853", penwidth=2];
-    dashboards -> es [label="Aggregation API", color="#34A853", penwidth=2];
-    management -> es [label="Mapping API", color="#34A853"];
-    devtools -> es [label="REST API", color="#34A853"];
-}
-```
+![Интерфейс Kibana — основные разделы](screenshots/KibanaInterface.svg)
+---
 
 ### Описание разделов
 
 **Discover** — основной инструмент для просмотра логов. Здесь мы видим:
-
-```dot
-digraph DiscoverScreen {
-    label="Экран Discover — что мы видим";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.7;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=9];
-    
-    subgraph cluster_top {
-        label="Верхняя панель";
-        style=filled;
-        fillcolor="#E8F0FE";
-        fontsize=12;
-        
-        index_selector [label="Выбор индекса:\nlogs-*\n(все логи)", fillcolor="#BBDEFB", style=filled];
-        time_filter [label="Фильтр по времени:\nLast 15 minutes\nLast 1 hour\nToday\nAbsolute date range", fillcolor="#BBDEFB", style=filled];
-        search_bar [label="Строка поиска (KQL):\nnginx AND error\ntags: \"postgresql\"\nhost.name: \"nginx-1\"", fillcolor="#BBDEFB", style=filled];
-    }
-    
-    subgraph cluster_main {
-        label="Основная область — гистограмма + логи";
-        style=filled;
-        fillcolor="#FFF3E0";
-        fontsize=12;
-        
-        histogram [label="Гистограмма\nРаспределение логов\nпо времени\n(столбчатая диаграмма)\nПоказывает ВСПЛЕСКИ\nи ПАДЕНИЯ трафика", fillcolor="#FFE0B2", style=filled];
-        log_table [label="Таблица логов\nКаждая строка = одно событие\nКолонки:\n  @timestamp — время\n  message — текст лога\n  host.name — сервер\n  tags — метки (nginx, psql)\n  log.file.path — файл", fillcolor="#FFE0B2", style=filled];
-    }
-    
-    subgraph cluster_sidebar {
-        label="Боковая панель (поля)";
-        style=filled;
-        fillcolor="#E6F4EA";
-        fontsize=12;
-        
-        fields [label="Доступные поля:\n  agent.name\n  host.name\n  log.file.path\n  message\n  tags\n  @timestamp\n\nКлик → фильтр по значению\nили статистика", fillcolor="#C8E6C9", style=filled];
-    }
-    
-    index_selector -> histogram;
-    time_filter -> histogram;
-    search_bar -> log_table;
-    histogram -> log_table [label="Клик по\nстолбцу →\nфильтр по\nвремени"];
-    log_table -> fields [label="Клик по\nполю →\nдетали"];
-}
-```
+![Discover](screenshots/DiscoverScreen.svg)
+---
 
 ### Что мы видим на экране Discover
 
@@ -1266,28 +839,8 @@ digraph DiscoverScreen {
 #### 3. Строка поиска (KQL)
 
 **Kibana Query Language (KQL)** — язык запросов для фильтрации логов.
-
-```dot
-digraph KQL_Examples {
-    label="Примеры KQL-запросов";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.6;
-    ranksep=0.4;
-    
-    node [shape=note, style=rounded, fontname="Arial", fontsize=9];
-    
-    q1 [label="Поиск ошибок:\nnginx AND error\n→ все логи nginx с ошибками", fillcolor="#FFCDD2", style=filled];
-    q2 [label="Фильтр по серверу:\nhost.name: \"nginx-1\"\n→ только логи с nginx-1", fillcolor="#FFCDD2", style=filled];
-    q3 [label="Фильтр по тегам:\ntags: \"postgresql\"\n→ только логи БД", fillcolor="#FFCDD2", style=filled];
-    q4 [label="Исключение:\nNOT system\n→ всё кроме системных логов", fillcolor="#FFCDD2", style=filled];
-    q5 [label="HTTP статусы:\nresponse: 500\n→ только ошибки 500", fillcolor="#FFCDD2", style=filled];
-    q6 [label="Диапазон:\n@timestamp > \"2026-06-10T15:00\"\n→ логи после 15:00", fillcolor="#FFCDD2", style=filled];
-}
-```
+![Kibana Query Language (KQL)](screenshots/KQL_Examples.svg)
+---
 
 #### 4. Боковая панель с полями
 
@@ -1308,97 +861,19 @@ digraph KQL_Examples {
 ### Как настроить визуализацию (пошагово)
 
 ### Схема: Процесс настройки Index Pattern
-
-```dot
-digraph SetupFlow {
-    label="Процесс настройки Kibana для просмотра логов";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.6;
-    ranksep=0.4;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    step1 [label="Шаг 1: Открыть Kibana\nhttp://192.168.122.60:5601", fillcolor="#E8F0FE", style=filled];
-    step2 [label="Шаг 2: Explore on my own\n(самостоятельная настройка)", fillcolor="#E8F0FE", style=filled];
-    step3 [label="Шаг 3: Stack Management\n→ Index Patterns\n→ Create index pattern", fillcolor="#FFF3E0", style=filled];
-    step4 [label="Шаг 4: Ввести паттерн\nName: logs-*\n(соответствует индексам\nlogs-8.12.0-YYYY.MM.DD)", fillcolor="#FFF3E0", style=filled];
-    step5 [label="Шаг 5: Выбрать timestamp\nTimestamp field: @timestamp\n(основное поле времени)", fillcolor="#FFF3E0", style=filled];
-    step6 [label="Шаг 6: Открыть Discover\nМеню → Discover\nВидим все логи\nв реальном времени", fillcolor="#E6F4EA", style=filled];
-    step7 [label="Шаг 7: Фильтрация\nИспользовать KQL\nдля поиска нужных\nлогов", fillcolor="#E6F4EA", style=filled];
-    
-    step1 -> step2;
-    step2 -> step3;
-    step3 -> step4;
-    step4 -> step5;
-    step5 -> step6;
-    step6 -> step7;
-}
-```
+![Процесс настройки Index Pattern](screenshots/SetupFlow.svg)
+---
 
 ### Практические сценарии использования Kibana
 
 ### Схема: Сценарии диагностики через Kibana
-
-```dot
-digraph DiagnosticScenarios {
-    label="Типовые сценарии диагностики в Kibana";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.8;
-    ranksep=0.6;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    scenario1 [label="Сценарий 1: Ошибки 502\nСимптом: пользователи\nжалуются на 502\n\nДействие:\n1. KQL: nginx AND 502\n2. Смотрим гистограмму\n   → когда началось?\n3. Смотрим host.name\n   → на каком сервере?\n4. Смотрим message\n   → почему 502?\n\nРезультат: backend-1\nупал в 15:32", fillcolor="#FFCDD2", style=filled];
-    
-    scenario2 [label="Сценарий 2: Медленная БД\nСимптом: сайт тормозит\n\nДействие:\n1. KQL: postgresql AND duration\n2. Фильтр: duration > 1000\n3. Смотрим @timestamp\n   → пик в 12:00?\n4. Смотрим message\n   → какой запрос?\n\nРезультат: SELECT без\nиндекса в обеденный\nчас пик", fillcolor="#FFCDD2", style=filled];
-    
-    scenario3 [label="Сценарий 3: Анализ DDoS\nСимптом: резкий рост\nтрафика\n\nДействие:\n1. Смотрим гистограмму\n   → всплеск в 03:00\n2. KQL: nginx AND access\n3. Смотрим message\n   → 10000 запросов/сек\n   с одного IP\n4. Добавляем фильтр\n   по IP\n\nРезультат: DDoS атака\nс IP 45.33.32.156", fillcolor="#FFCDD2", style=filled];
-    
-    scenario4 [label="Сценарий 4: Мониторинг\nпосле деплоя\nСимптом: новый релиз\n\nДействие:\n1. KQL: tags: \"nginx\"\n2. Фильтр по времени:\n   после деплоя\n3. Смотрим ошибки:\n   nginx AND error\n4. Сравниваем с\n   предыдущим часом\n\nРезультат: ошибок\nне увеличилось\n→ деплой успешен", fillcolor="#C8E6C9", style=filled];
-}
-```
-
+![Сценарии диагностики через Kibana](screenshots/DiagnosticScenarios.svg)
 ---
 
 ### Как работает временная шкала (Time Picker)
+![Как работает временная шкала (Time Picker)](screenshots/TimeFilter.svg)
+---
 
-```dot
-digraph TimeFilter {
-    label="Фильтрация по времени в Kibana";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.7;
-    ranksep=0.5;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    time_picker [label="Time Picker\n(в правом верхнем углу)", shape=oval, fillcolor="#E8F0FE", style=filled];
-    
-    presets [label="Быстрые периоды:\n• Last 15 minutes\n• Last 1 hour\n• Last 24 hours\n• Today\n• This week", fillcolor="#FFF3E0", style=filled];
-    
-    absolute [label="Абсолютный период:\n• From: 2026-06-10 12:00\n• To:   2026-06-10 15:00\n→ логи за 3 часа", fillcolor="#FFF3E0", style=filled];
-    
-    relative [label="Относительный период:\n• 30 minutes ago\n  to now\n→ последние 30 минут\n\n• 1 hour ago\n  to 30 minutes ago\n→ логи за конкретный\n  час в прошлом", fillcolor="#FFF3E0", style=filled];
-    
-    autorefresh [label="Автообновление:\n• Off (вручную)\n• 5 seconds\n• 30 seconds\n• 1 minute\n→ логи обновляются\n  автоматически\n  (как tail -f)", fillcolor="#E6F4EA", style=filled];
-    
-    time_picker -> presets;
-    time_picker -> absolute;
-    time_picker -> relative;
-    time_picker -> autorefresh;
-}
-```
 
 ### Практический пример: настройка автообновления
 
@@ -1411,33 +886,7 @@ digraph TimeFilter {
 ---
 
 ### Как создать простой дашборд
-
-```dot
-digraph DashboardCreation {
-    label="Создание дашборда в Kibana";
-    labelloc=t;
-    fontsize=18;
-    fontname="Arial";
-    rankdir=TB;
-    splines=ortho;
-    nodesep=0.6;
-    ranksep=0.4;
-    
-    node [shape=box, style=rounded, fontname="Arial", fontsize=10];
-    
-    step1 [label="1. Discover\nНайти нужные логи\nKQL: nginx AND error", fillcolor="#E8F0FE", style=filled];
-    step2 [label="2. Сохранить поиск\nSave → название:\n'Nginx errors'", fillcolor="#FFF3E0", style=filled];
-    step3 [label="3. Создать визуализацию\nVisualize → Lens\nТип: Bar chart\nОсь X: @timestamp\nОсь Y: Count", fillcolor="#FFF3E0", style=filled];
-    step4 [label="4. Добавить на дашборд\nDashboard → Create\nДобавить визуализации:\n- Гистограмма ошибок\n- Таблица последних\n- Счётчик 5xx\n- Топ IP-адресов", fillcolor="#E6F4EA", style=filled];
-    step5 [label="5. Сохранить дашборд\nDashboard → Save\nНазвание:\n'Production Overview'\n\nГотово! Можно\nоткрывать в любой\nмомент", fillcolor="#E6F4EA", style=filled];
-    
-    step1 -> step2;
-    step2 -> step3;
-    step3 -> step4;
-    step4 -> step5;
-}
-```
-
+![Как создать простой дашборд](screenshots/DashboardCreation.svg)
 ---
 
 ### Что означают цвета в гистограмме?
