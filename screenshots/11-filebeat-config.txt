@@ -1,0 +1,24 @@
+sk@skhome01:~/elk-cluster$ ssh ubuntu@192.168.122.107 sudo cat /etc/filebeat/filebeat.yml | grep -v "^#" | grep -v "^$"
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/nginx/access.log
+    - /var/log/nginx/error.log
+  tags: ["nginx", "nginx-1"]
+- type: log
+  enabled: true
+  paths:
+    - /var/log/postgresql/postgresql-*.log
+  tags: ["postgresql", "nginx-1"]
+- type: log
+  enabled: true
+  paths:
+    - /var/log/syslog
+  tags: ["system", "nginx-1"]
+output.elasticsearch:
+  hosts: ["192.168.122.71:9200", "192.168.122.72:9200", "192.168.122.73:9200"]
+  index: "logs-%{[agent.version]}-%{+yyyy.MM.dd}"
+setup.template.name: "logs"
+setup.template.pattern: "logs-*"
+setup.ilm.enabled: false

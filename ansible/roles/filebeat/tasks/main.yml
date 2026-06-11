@@ -1,0 +1,22 @@
+---
+- name: Копирование Filebeat deb
+  copy:
+    src: ../../filebeat-8.12.0-amd64.deb
+    dest: /tmp/filebeat.deb
+
+- name: Установка Filebeat
+  apt:
+    deb: /tmp/filebeat.deb
+    state: present
+
+- name: Настройка Filebeat
+  template:
+    src: filebeat.yml.j2
+    dest: /etc/filebeat/filebeat.yml
+  notify: restart filebeat
+
+- name: Запуск Filebeat
+  systemd:
+    name: filebeat
+    state: started
+    enabled: yes

@@ -1,0 +1,1 @@
+sk@skhome01:~/elk-cluster$ find . -type f ! -path "./.git/*" ! -name "*.deb" | sort

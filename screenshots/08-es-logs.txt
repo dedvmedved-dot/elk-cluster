@@ -1,0 +1,41 @@
+sk@skhome01:~/elk-cluster$ curl -s "http://192.168.122.71:9200/logs-*/_search?size=2&sort=@timestamp:desc" | python3 -m json.tool | head -40
+{
+    "took": 11,
+    "timed_out": false,
+    "_shards": {
+        "total": 2,
+        "successful": 2,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 10000,
+            "relation": "gte"
+        },
+        "max_score": null,
+        "hits": [
+            {
+                "_index": ".ds-logs-8.12.0-2026.06.11-2026.06.11-000001",
+                "_id": "dWsCtJ4B2ffBAEtyG06E",
+                "_score": null,
+                "_source": {
+                    "input": {
+                        "type": "log"
+                    },
+                    "agent": {
+                        "name": "ubuntu",
+                        "id": "6686934d-6e13-4c18-ac2a-ad8a39f13dc1",
+                        "ephemeral_id": "bb51d391-f5fb-435a-8666-9d15e018314b",
+                        "type": "filebeat",
+                        "version": "8.12.0"
+                    },
+                    "@timestamp": "2026-06-11T00:08:07.504Z",
+                    "ecs": {
+                        "version": "8.0.0"
+                    },
+                    "log": {
+                        "file": {
+                            "path": "/var/log/syslog"
+                        },
+                        "offset": 416383

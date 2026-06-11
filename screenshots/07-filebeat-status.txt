@@ -1,0 +1,22 @@
+sk@skhome01:~/elk-cluster$ for ip in 192.168.122.107 192.168.122.182 192.168.122.189; do
+>   echo "=== $ip ==="
+>   ssh ubuntu@$ip systemctl status filebeat --no-pager | head -5
+> done
+=== 192.168.122.107 ===
+● filebeat.service - Filebeat sends log files to Logstash or directly to Elasticsearch.
+     Loaded: loaded (/lib/systemd/system/filebeat.service; disabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-06-10 23:25:21 UTC; 43min ago
+       Docs: https://www.elastic.co/beats/filebeat
+   Main PID: 1156 (filebeat)
+=== 192.168.122.182 ===
+● filebeat.service - Filebeat sends log files to Logstash or directly to Elasticsearch.
+     Loaded: loaded (/lib/systemd/system/filebeat.service; disabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-06-10 23:25:21 UTC; 43min ago
+       Docs: https://www.elastic.co/beats/filebeat
+   Main PID: 1154 (filebeat)
+=== 192.168.122.189 ===
+● filebeat.service - Filebeat sends log files to Logstash or directly to Elasticsearch.
+     Loaded: loaded (/lib/systemd/system/filebeat.service; disabled; vendor preset: enabled)
+     Active: active (running) since Wed 2026-06-10 23:25:21 UTC; 43min ago
+       Docs: https://www.elastic.co/beats/filebeat
+   Main PID: 24399 (filebeat)

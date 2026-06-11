@@ -1,0 +1,15 @@
+cluster.name: elk-cluster
+node.name: {{ inventory_hostname }}
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+http.port: 9200
+
+# Отключаем безопасность для учебных целей
+xpack.security.enabled: false
+xpack.security.enrollment.enabled: false
+xpack.security.http.ssl.enabled: false
+xpack.security.transport.ssl.enabled: false
+
+discovery.seed_hosts: ["192.168.122.71", "192.168.122.72", "192.168.122.73"]
+cluster.initial_master_nodes: ["es-node1", "es-node2", "es-node3"]

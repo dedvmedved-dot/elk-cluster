@@ -1,0 +1,8 @@
+sk@skhome01:~/elk-cluster$ virsh list --all | grep -E "es-node|kibana|nginx|db"
+ 11   nginx-2        running
+ 13   db-1           running
+ 23   nginx-1        running
+ 37   kibana         running
+ 38   es-node3       running
+ 39   es-node2       running
+ 40   es-node1       running

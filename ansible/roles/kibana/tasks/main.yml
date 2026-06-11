@@ -1,0 +1,22 @@
+---
+- name: Копирование Kibana deb
+  copy:
+    src: ../../kibana-8.12.0-amd64.deb
+    dest: /tmp/kibana.deb
+
+- name: Установка Kibana
+  apt:
+    deb: /tmp/kibana.deb
+    state: present
+
+- name: Настройка Kibana
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+  notify: restart kibana
+
+- name: Запуск Kibana
+  systemd:
+    name: kibana
+    state: started
+    enabled: yes

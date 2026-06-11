@@ -1,0 +1,39 @@
+sk@skhome01:~/elk-cluster/ansible$ ansible all -i inventory.ini -m ping
+nginx-1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+kibana | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+es-node1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+es-node3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+es-node2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+nginx-2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+db-1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+backend-1 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.122.238 port 22: No route to host",
+    "unreachable": true
+}
+backend-2 | UNREACHABLE! => {
+    "changed": false,
+    "msg": "Failed to connect to the host via ssh: ssh: connect to host 192.168.122.75 port 22: No route to host",
+    "unreachable": true
+}

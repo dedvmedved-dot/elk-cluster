@@ -1,0 +1,10 @@
+---
+- hosts: elasticsearch
+  become: yes
+  roles:
+    - roles/elasticsearch
+
+- hosts: kibana
+  become: yes
+  roles:
+    - roles/kibana

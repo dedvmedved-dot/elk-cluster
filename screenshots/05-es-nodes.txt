@@ -1,0 +1,4 @@
+sk@skhome01:~/elk-cluster$ curl -s http://192.168.122.71:9200/_cat/nodes
+192.168.122.72 61 96 1 0.00 0.04 0.01 cdfhilmrstw * es-node2
+192.168.122.73 15 96 1 0.02 0.07 0.05 cdfhilmrstw - es-node3
+192.168.122.71 14 95 0 0.01 0.02 0.00 cdfhilmrstw - es-node1

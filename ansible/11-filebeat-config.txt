@@ -1,0 +1,1 @@
+sk@skhome01:~/elk-cluster$ ssh ubuntu@192.168.122.107 cat /etc/filebeat/filebeat.yml | grep -v "^#" | grep -v "^$"

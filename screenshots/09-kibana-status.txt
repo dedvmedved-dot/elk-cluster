@@ -1,0 +1,16 @@
+sk@skhome01:~/elk-cluster$ curl -s http://192.168.122.60:5601/api/status | python3 -m json.tool | head -15
+{
+    "name": "ubuntu",
+    "uuid": "cefd70d1-0b7e-4e1b-8844-dda555f6a490",
+    "version": {
+        "number": "8.12.0",
+        "build_hash": "e9092c0a17923f4ed984456b8a5db619b0a794b3",
+        "build_number": 70088,
+        "build_snapshot": false,
+        "build_date": "2024-01-10T23:07:29.286Z"
+    },
+    "status": {
+        "overall": {
+            "level": "available",
+            "summary": "All services and plugins are available"
+        },
