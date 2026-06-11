@@ -1,0 +1,100 @@
+<svg width="435pt" height="540pt" viewBox="0.00 0.00 435.00 540.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 535.6)">
+<title>SetupFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-535.6 431.12,-535.6 431.12,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-511.4" font-family="Arial" font-size="18.00">Процесс настройки Kibana для просмотра логов</text>
+<!-- step1 -->
+<g id="node1" class="node">
+<title>step1</title>
+<polygon fill="#e8f0fe" stroke="black" points="281.33,-502 145.78,-502 145.78,-466 281.33,-466 281.33,-502"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-487" font-family="Arial" font-size="10.00">Шаг 1: Открыть Kibana</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-475" font-family="Arial" font-size="10.00">http://192.168.122.60:5601</text>
+</g>
+<!-- step2 -->
+<g id="node2" class="node">
+<title>step2</title>
+<polygon fill="#e8f0fe" stroke="black" points="292.96,-437 134.16,-437 134.16,-401 292.96,-401 292.96,-437"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-422" font-family="Arial" font-size="10.00">Шаг 2: Explore on my own</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-410" font-family="Arial" font-size="10.00">(самостоятельная настройка)</text>
+</g>
+<!-- step1&#45;&gt;step2 -->
+<g id="edge1" class="edge">
+<title>step1-&gt;step2</title>
+<path fill="none" stroke="black" d="M213.56,-465.55C213.56,-465.55 213.56,-448.79 213.56,-448.79"/>
+<polygon fill="black" stroke="black" points="217.06,-448.79 213.56,-438.79 210.06,-448.79 217.06,-448.79"/>
+</g>
+<!-- step3 -->
+<g id="node3" class="node">
+<title>step3</title>
+<polygon fill="#fff3e0" stroke="black" points="279.92,-372 147.2,-372 147.2,-328 279.92,-328 279.92,-372"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-359" font-family="Arial" font-size="10.00">Шаг 3: Stack Management</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-347" font-family="Arial" font-size="10.00">→ Index Patterns</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-335" font-family="Arial" font-size="10.00">→ Create index pattern</text>
+</g>
+<!-- step2&#45;&gt;step3 -->
+<g id="edge2" class="edge">
+<title>step2-&gt;step3</title>
+<path fill="none" stroke="black" d="M213.56,-400.51C213.56,-400.51 213.56,-383.99 213.56,-383.99"/>
+<polygon fill="black" stroke="black" points="217.06,-383.99 213.56,-373.99 210.06,-383.99 217.06,-383.99"/>
+</g>
+<!-- step4 -->
+<g id="node4" class="node">
+<title>step4</title>
+<polygon fill="#fff3e0" stroke="black" points="282.96,-299 144.16,-299 144.16,-243 282.96,-243 282.96,-299"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-286" font-family="Arial" font-size="10.00">Шаг 4: Ввести паттерн</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-274" font-family="Arial" font-size="10.00">Name: logs-*</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-262" font-family="Arial" font-size="10.00">(соответствует индексам</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-250" font-family="Arial" font-size="10.00">logs-8.12.0-YYYY.MM.DD)</text>
+</g>
+<!-- step3&#45;&gt;step4 -->
+<g id="edge3" class="edge">
+<title>step3-&gt;step4</title>
+<path fill="none" stroke="black" d="M213.56,-327.57C213.56,-327.57 213.56,-310.92 213.56,-310.92"/>
+<polygon fill="black" stroke="black" points="217.06,-310.92 213.56,-300.92 210.06,-310.92 217.06,-310.92"/>
+</g>
+<!-- step5 -->
+<g id="node5" class="node">
+<title>step5</title>
+<polygon fill="#fff3e0" stroke="black" points="287.76,-214 139.35,-214 139.35,-170 287.76,-170 287.76,-214"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-201" font-family="Arial" font-size="10.00">Шаг 5: Выбрать timestamp</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-189" font-family="Arial" font-size="10.00">Timestamp field: @timestamp</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-177" font-family="Arial" font-size="10.00">(основное поле времени)</text>
+</g>
+<!-- step4&#45;&gt;step5 -->
+<g id="edge4" class="edge">
+<title>step4-&gt;step5</title>
+<path fill="none" stroke="black" d="M213.56,-242.93C213.56,-242.93 213.56,-225.79 213.56,-225.79"/>
+<polygon fill="black" stroke="black" points="217.06,-225.79 213.56,-215.79 210.06,-225.79 217.06,-225.79"/>
+</g>
+<!-- step6 -->
+<g id="node6" class="node">
+<title>step6</title>
+<polygon fill="#e6f4ea" stroke="black" points="277.13,-141 149.99,-141 149.99,-85 277.13,-85 277.13,-141"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-128" font-family="Arial" font-size="10.00">Шаг 6: Открыть Discover</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-116" font-family="Arial" font-size="10.00">Меню → Discover</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-104" font-family="Arial" font-size="10.00">Видим все логи</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-92" font-family="Arial" font-size="10.00">в реальном времени</text>
+</g>
+<!-- step5&#45;&gt;step6 -->
+<g id="edge5" class="edge">
+<title>step5-&gt;step6</title>
+<path fill="none" stroke="black" d="M213.56,-169.57C213.56,-169.57 213.56,-152.92 213.56,-152.92"/>
+<polygon fill="black" stroke="black" points="217.06,-152.92 213.56,-142.92 210.06,-152.92 217.06,-152.92"/>
+</g>
+<!-- step7 -->
+<g id="node7" class="node">
+<title>step7</title>
+<polygon fill="#e6f4ea" stroke="black" points="266.29,-56 160.82,-56 160.82,0 266.29,0 266.29,-56"/>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-43" font-family="Arial" font-size="10.00">Шаг 7: Фильтрация</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-31" font-family="Arial" font-size="10.00">Использовать KQL</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-19" font-family="Arial" font-size="10.00">для поиска нужных</text>
+<text xml:space="preserve" text-anchor="middle" x="213.56" y="-7" font-family="Arial" font-size="10.00">логов</text>
+</g>
+<!-- step6&#45;&gt;step7 -->
+<g id="edge6" class="edge">
+<title>step6-&gt;step7</title>
+<path fill="none" stroke="black" d="M213.56,-84.7C213.56,-84.7 213.56,-67.98 213.56,-67.98"/>
+<polygon fill="black" stroke="black" points="217.06,-67.98 213.56,-57.98 210.06,-67.98 217.06,-67.98"/>
+</g>
+</g>
+</svg>

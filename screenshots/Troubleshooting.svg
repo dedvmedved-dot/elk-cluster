@@ -1,0 +1,160 @@
+<svg width="368pt" height="1071pt" viewBox="0.00 0.00 368.00 1071.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1067.02)">
+<title>Troubleshooting</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-1067.02 364.08,-1067.02 364.08,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-1042.82" font-family="Arial" font-size="18.00">Хронология проблем при настройке ELK</text>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="180.04" cy="-1010.79" rx="95.39" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-1013.79" font-family="Arial" font-size="10.00">Начало: Terraform создал</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-1001.79" font-family="Arial" font-size="10.00">4 ВМ для ES + Kibana</text>
+</g>
+<!-- p1 -->
+<g id="node2" class="node">
+<title>p1</title>
+<polygon fill="#ffcdd2" stroke="black" points="255.84,-952.17 104.25,-952.17 104.25,-896.17 255.84,-896.17 255.84,-952.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-939.17" font-family="Arial" font-size="10.00">Проблема 1: Репозиторий ES</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-927.17" font-family="Arial" font-size="10.00">apt update → 403 Forbidden</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-915.17" font-family="Arial" font-size="10.00">artifacts.elastic.co</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-903.17" font-family="Arial" font-size="10.00">недоступен</text>
+</g>
+<!-- start&#45;&gt;p1 -->
+<g id="edge1" class="edge">
+<title>start-&gt;p1</title>
+<path fill="none" stroke="black" d="M180.04,-988.03C180.04,-988.03 180.04,-963.86 180.04,-963.86"/>
+<polygon fill="black" stroke="black" points="183.54,-963.86 180.04,-953.86 176.54,-963.86 183.54,-963.86"/>
+</g>
+<!-- s1 -->
+<g id="node3" class="node">
+<title>s1</title>
+<polygon fill="#c8e6c9" stroke="black" points="244.72,-860.17 115.36,-860.17 115.36,-768.17 244.72,-768.17 244.72,-860.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-847.17" font-family="Arial" font-size="10.00">Решение 1:</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-835.17" font-family="Arial" font-size="10.00">Скачали deb-пакеты</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-823.17" font-family="Arial" font-size="10.00">через браузер с VPN</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-811.17" font-family="Arial" font-size="10.00">Elasticsearch 8.12.0</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-799.17" font-family="Arial" font-size="10.00">Kibana 8.12.0</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-787.17" font-family="Arial" font-size="10.00">Filebeat 8.12.0</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-775.17" font-family="Arial" font-size="10.00">Установка через dpkg -i</text>
+</g>
+<!-- p1&#45;&gt;s1 -->
+<g id="edge2" class="edge">
+<title>p1-&gt;s1</title>
+<path fill="none" stroke="black" d="M180.04,-895.84C180.04,-895.84 180.04,-871.83 180.04,-871.83"/>
+<polygon fill="black" stroke="black" points="183.54,-871.83 180.04,-861.83 176.54,-871.83 183.54,-871.83"/>
+</g>
+<!-- p2 -->
+<g id="node4" class="node">
+<title>p2</title>
+<polygon fill="#ffcdd2" stroke="black" points="251.67,-732.17 108.42,-732.17 108.42,-676.17 251.67,-676.17 251.67,-732.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-719.17" font-family="Arial" font-size="10.00">Проблема 2: Версия ES 7.x</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-707.17" font-family="Arial" font-size="10.00">в Ansible-роли</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-695.17" font-family="Arial" font-size="10.00">Устаревший репозиторий</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-683.17" font-family="Arial" font-size="10.00">7.x уже не поддерживается</text>
+</g>
+<!-- s1&#45;&gt;p2 -->
+<g id="edge3" class="edge">
+<title>s1-&gt;p2</title>
+<path fill="none" stroke="black" d="M180.04,-767.84C180.04,-767.84 180.04,-744.08 180.04,-744.08"/>
+<polygon fill="black" stroke="black" points="183.54,-744.08 180.04,-734.08 176.54,-744.08 183.54,-744.08"/>
+</g>
+<!-- s2 -->
+<g id="node5" class="node">
+<title>s2</title>
+<polygon fill="#c8e6c9" stroke="black" points="239.44,-640.17 120.64,-640.17 120.64,-560.17 239.44,-560.17 239.44,-640.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-627.17" font-family="Arial" font-size="10.00">Решение 2:</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-615.17" font-family="Arial" font-size="10.00">Перешли на ES 8.12.0</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-603.17" font-family="Arial" font-size="10.00">Обновили шаблоны</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-591.17" font-family="Arial" font-size="10.00">конфигурации</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-579.17" font-family="Arial" font-size="10.00">Добавили отключение</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-567.17" font-family="Arial" font-size="10.00">security (xpack)</text>
+</g>
+<!-- p2&#45;&gt;s2 -->
+<g id="edge4" class="edge">
+<title>p2-&gt;s2</title>
+<path fill="none" stroke="black" d="M180.04,-675.75C180.04,-675.75 180.04,-652.15 180.04,-652.15"/>
+<polygon fill="black" stroke="black" points="183.54,-652.15 180.04,-642.15 176.54,-652.15 183.54,-652.15"/>
+</g>
+<!-- p3 -->
+<g id="node6" class="node">
+<title>p3</title>
+<polygon fill="#ffcdd2" stroke="black" points="266.96,-524.17 93.13,-524.17 93.13,-468.17 266.96,-468.17 266.96,-524.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-511.17" font-family="Arial" font-size="10.00">Проблема 3: nginx-1/2 недоступны</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-499.17" font-family="Arial" font-size="10.00">Старые ВМ изменили IP</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-487.17" font-family="Arial" font-size="10.00">после перезагрузки</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-475.17" font-family="Arial" font-size="10.00">SSH host key mismatch</text>
+</g>
+<!-- s2&#45;&gt;p3 -->
+<g id="edge5" class="edge">
+<title>s2-&gt;p3</title>
+<path fill="none" stroke="black" d="M180.04,-559.96C180.04,-559.96 180.04,-535.87 180.04,-535.87"/>
+<polygon fill="black" stroke="black" points="183.54,-535.87 180.04,-525.87 176.54,-535.87 183.54,-535.87"/>
+</g>
+<!-- s3 -->
+<g id="node7" class="node">
+<title>s3</title>
+<polygon fill="#c8e6c9" stroke="black" points="244.45,-432.17 115.64,-432.17 115.64,-352.17 244.45,-352.17 244.45,-432.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-419.17" font-family="Arial" font-size="10.00">Решение 3:</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-407.17" font-family="Arial" font-size="10.00">Перезагрузили nginx ВМ</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-395.17" font-family="Arial" font-size="10.00">Получили новые IP</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-383.17" font-family="Arial" font-size="10.00">через virsh domifaddr</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-371.17" font-family="Arial" font-size="10.00">Очистили known_hosts</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-359.17" font-family="Arial" font-size="10.00">Обновили inventory</text>
+</g>
+<!-- p3&#45;&gt;s3 -->
+<g id="edge6" class="edge">
+<title>p3-&gt;s3</title>
+<path fill="none" stroke="black" d="M180.04,-467.75C180.04,-467.75 180.04,-444.15 180.04,-444.15"/>
+<polygon fill="black" stroke="black" points="183.54,-444.15 180.04,-434.15 176.54,-444.15 183.54,-444.15"/>
+</g>
+<!-- p4 -->
+<g id="node8" class="node">
+<title>p4</title>
+<polygon fill="#ffcdd2" stroke="black" points="245.55,-316.17 114.53,-316.17 114.53,-272.17 245.55,-272.17 245.55,-316.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-303.17" font-family="Arial" font-size="10.00">Проблема 4: backend-1/2</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-291.17" font-family="Arial" font-size="10.00">недоступны (выключены)</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-279.17" font-family="Arial" font-size="10.00">No route to host</text>
+</g>
+<!-- s3&#45;&gt;p4 -->
+<g id="edge7" class="edge">
+<title>s3-&gt;p4</title>
+<path fill="none" stroke="black" d="M180.04,-351.74C180.04,-351.74 180.04,-328.07 180.04,-328.07"/>
+<polygon fill="black" stroke="black" points="183.54,-328.07 180.04,-318.07 176.54,-328.07 183.54,-328.07"/>
+</g>
+<!-- s4 -->
+<g id="node9" class="node">
+<title>s4</title>
+<polygon fill="#c8e6c9" stroke="black" points="241.96,-236.17 118.13,-236.17 118.13,-132.17 241.96,-132.17 241.96,-236.17"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-223.17" font-family="Arial" font-size="10.00">Решение 4:</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-211.17" font-family="Arial" font-size="10.00">Исключили backend-1/2</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-199.17" font-family="Arial" font-size="10.00">из inventory</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-187.17" font-family="Arial" font-size="10.00">Настроили Filebeat</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-175.17" font-family="Arial" font-size="10.00">только на доступных:</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-163.17" font-family="Arial" font-size="10.00">nginx-1, nginx-2, db-1</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-151.17" font-family="Arial" font-size="10.00">Этого достаточно</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-139.17" font-family="Arial" font-size="10.00">для демонстрации</text>
+</g>
+<!-- p4&#45;&gt;s4 -->
+<g id="edge8" class="edge">
+<title>p4-&gt;s4</title>
+<path fill="none" stroke="black" d="M180.04,-271.91C180.04,-271.91 180.04,-247.91 180.04,-247.91"/>
+<polygon fill="black" stroke="black" points="183.54,-247.91 180.04,-237.91 176.54,-247.91 183.54,-247.91"/>
+</g>
+<!-- success -->
+<g id="node10" class="node">
+<title>success</title>
+<ellipse fill="#a5d6a7" stroke="black" stroke-width="2" cx="180.04" cy="-48.08" rx="77.73" ry="48.08"/>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-69.08" font-family="Arial" font-size="10.00">ELK Stack работает</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-57.08" font-family="Arial" font-size="10.00">ES: 3 ноды, green</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-45.08" font-family="Arial" font-size="10.00">Kibana: доступна</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-33.08" font-family="Arial" font-size="10.00">Filebeat: 3 сервера</text>
+<text xml:space="preserve" text-anchor="middle" x="180.04" y="-21.08" font-family="Arial" font-size="10.00">Логи поступают</text>
+</g>
+<!-- s4&#45;&gt;success -->
+<g id="edge9" class="edge">
+<title>s4-&gt;success</title>
+<path fill="none" stroke="black" d="M180.04,-131.94C180.04,-131.94 180.04,-108.33 180.04,-108.33"/>
+<polygon fill="black" stroke="black" points="183.54,-108.33 180.04,-98.33 176.54,-108.33 183.54,-108.33"/>
+</g>
+</g>
+</svg>

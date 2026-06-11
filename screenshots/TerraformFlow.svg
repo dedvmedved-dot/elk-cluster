@@ -1,0 +1,87 @@
+<svg width="317pt" height="537pt" viewBox="0.00 0.00 317.00 537.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 533.25)">
+<title>TerraformFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-533.25 313.41,-533.25 313.41,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-507.25" font-family="Arial" font-size="20.00">Создание инфраструктуры ELK</text>
+<!-- start -->
+<g id="node1" class="node">
+<title>start</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="154.7" cy="-479.25" rx="27" ry="18"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-476.25" font-family="Arial" font-size="10.00">Старт</text>
+</g>
+<!-- step1 -->
+<g id="node2" class="node">
+<title>step1</title>
+<polygon fill="#fce8e6" stroke="black" points="214.1,-425.25 95.31,-425.25 95.31,-381.25 214.1,-381.25 214.1,-425.25"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-412.25" font-family="Arial" font-size="10.00">terraform init</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-400.25" font-family="Arial" font-size="10.00">Загрузка провайдера</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-388.25" font-family="Arial" font-size="10.00">libvirt 0.7.1</text>
+</g>
+<!-- start&#45;&gt;step1 -->
+<g id="edge1" class="edge">
+<title>start-&gt;step1</title>
+<path fill="none" stroke="black" d="M154.7,-460.86C154.7,-460.86 154.7,-437.06 154.7,-437.06"/>
+<polygon fill="black" stroke="black" points="158.2,-437.06 154.7,-427.06 151.2,-437.06 158.2,-437.06"/>
+</g>
+<!-- step2 -->
+<g id="node3" class="node">
+<title>step2</title>
+<polygon fill="#e6f4ea" stroke="black" points="205.77,-345.25 103.64,-345.25 103.64,-289.25 205.77,-289.25 205.77,-345.25"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-332.25" font-family="Arial" font-size="10.00">terraform plan</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-320.25" font-family="Arial" font-size="10.00">План: 13 ресурсов</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-308.25" font-family="Arial" font-size="10.00">4 ВМ + диски +</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-296.25" font-family="Arial" font-size="10.00">cloud-init ISO</text>
+</g>
+<!-- step1&#45;&gt;step2 -->
+<g id="edge2" class="edge">
+<title>step1-&gt;step2</title>
+<path fill="none" stroke="black" d="M154.7,-381.11C154.7,-381.11 154.7,-357.02 154.7,-357.02"/>
+<polygon fill="black" stroke="black" points="158.2,-357.02 154.7,-347.02 151.2,-357.02 158.2,-357.02"/>
+</g>
+<!-- step3 -->
+<g id="node4" class="node">
+<title>step3</title>
+<polygon fill="#fff3e0" stroke="black" points="218.56,-253.25 90.85,-253.25 90.85,-161.25 218.56,-161.25 218.56,-253.25"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-240.25" font-family="Arial" font-size="10.00">terraform apply</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-228.25" font-family="Arial" font-size="10.00">Создание:</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-216.25" font-family="Arial" font-size="10.00">- es-node1 (2 ГБ, 2 CPU)</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-204.25" font-family="Arial" font-size="10.00">- es-node2 (2 ГБ, 2 CPU)</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-192.25" font-family="Arial" font-size="10.00">- es-node3 (2 ГБ, 2 CPU)</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-180.25" font-family="Arial" font-size="10.00">- kibana (2 ГБ, 2 CPU)</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-168.25" font-family="Arial" font-size="10.00">Все по 20 ГБ диск</text>
+</g>
+<!-- step2&#45;&gt;step3 -->
+<g id="edge3" class="edge">
+<title>step2-&gt;step3</title>
+<path fill="none" stroke="black" d="M154.7,-288.93C154.7,-288.93 154.7,-264.92 154.7,-264.92"/>
+<polygon fill="black" stroke="black" points="158.2,-264.92 154.7,-254.92 151.2,-264.92 158.2,-264.92"/>
+</g>
+<!-- step4 -->
+<g id="node5" class="node">
+<title>step4</title>
+<polygon fill="#fff3e0" stroke="black" points="206.32,-125.25 103.08,-125.25 103.08,-81.25 206.32,-81.25 206.32,-125.25"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-112.25" font-family="Arial" font-size="10.00">DHCP-резервации</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-100.25" font-family="Arial" font-size="10.00">Перезапуск libvirtd</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-88.25" font-family="Arial" font-size="10.00">Проверка ping</text>
+</g>
+<!-- step3&#45;&gt;step4 -->
+<g id="edge4" class="edge">
+<title>step3-&gt;step4</title>
+<path fill="none" stroke="black" d="M154.7,-161.03C154.7,-161.03 154.7,-137.24 154.7,-137.24"/>
+<polygon fill="black" stroke="black" points="158.2,-137.24 154.7,-127.24 151.2,-137.24 158.2,-137.24"/>
+</g>
+<!-- end -->
+<g id="node6" class="node">
+<title>end</title>
+<ellipse fill="#c8e6c9" stroke="black" cx="154.7" cy="-22.63" rx="69.07" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-25.63" font-family="Arial" font-size="10.00">4 ВМ запущены</text>
+<text xml:space="preserve" text-anchor="middle" x="154.7" y="-13.63" font-family="Arial" font-size="10.00">Доступны по SSH</text>
+</g>
+<!-- step4&#45;&gt;end -->
+<g id="edge5" class="edge">
+<title>step4-&gt;end</title>
+<path fill="none" stroke="black" d="M154.7,-80.8C154.7,-80.8 154.7,-57.04 154.7,-57.04"/>
+<polygon fill="black" stroke="black" points="158.2,-57.04 154.7,-47.04 151.2,-57.04 158.2,-57.04"/>
+</g>
+</g>
+</svg>

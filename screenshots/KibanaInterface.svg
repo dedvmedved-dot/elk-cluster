@@ -1,0 +1,122 @@
+<svg width="605pt" height="382pt" viewBox="0.00 0.00 605.00 382.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 377.83)">
+<title>KibanaInterface</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-377.83 601,-377.83 601,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="298.5" y="-353.63" font-family="Arial" font-size="18.00">Интерфейс Kibana — основные разделы</text>
+<g id="clust1" class="cluster">
+<title>cluster_menu</title>
+<polygon fill="#fff3e0" stroke="black" points="8,-159.4 8,-255 589,-255 589,-159.4 8,-159.4"/>
+<text xml:space="preserve" text-anchor="middle" x="298.5" y="-239.3" font-family="Arial" font-size="13.00">Главное меню (≡)</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_data</title>
+<polygon fill="#e6f4ea" stroke="black" points="232,-8 232,-124.6 359,-124.6 359,-8 232,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="295.5" y="-108.9" font-family="Arial" font-size="13.00">Источники данных</text>
+</g>
+<!-- login -->
+<g id="node1" class="node">
+<title>login</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="270" cy="-313.11" rx="95.85" ry="31.11"/>
+<text xml:space="preserve" text-anchor="middle" x="270" y="-322.11" font-family="Arial" font-size="10.00">Вход в Kibana</text>
+<text xml:space="preserve" text-anchor="middle" x="270" y="-310.11" font-family="Arial" font-size="10.00">http://192.168.122.60:5601</text>
+<text xml:space="preserve" text-anchor="middle" x="270" y="-298.11" font-family="Arial" font-size="10.00">→ Explore on my own</text>
+</g>
+<!-- discover -->
+<g id="node2" class="node">
+<title>discover</title>
+<polygon fill="#ffe0b2" stroke="black" points="115.67,-223.4 16.33,-223.4 16.33,-167.4 115.67,-167.4 115.67,-223.4"/>
+<text xml:space="preserve" text-anchor="middle" x="66" y="-210.4" font-family="Arial" font-size="10.00">Discover</text>
+<text xml:space="preserve" text-anchor="middle" x="66" y="-198.4" font-family="Arial" font-size="10.00">Поиск и просмотр</text>
+<text xml:space="preserve" text-anchor="middle" x="66" y="-186.4" font-family="Arial" font-size="10.00">логов в реальном</text>
+<text xml:space="preserve" text-anchor="middle" x="66" y="-174.4" font-family="Arial" font-size="10.00">времени</text>
+</g>
+<!-- login&#45;&gt;discover -->
+<g id="edge1" class="edge">
+<title>login-&gt;discover</title>
+<path fill="none" stroke="black" d="M173.68,-313C120.86,-313 66,-313 66,-313 66,-313 66,-235.38 66,-235.38"/>
+<polygon fill="black" stroke="black" points="69.5,-235.38 66,-225.38 62.5,-235.38 69.5,-235.38"/>
+</g>
+<!-- dashboards -->
+<g id="node3" class="node">
+<title>dashboards</title>
+<polygon fill="#ffe0b2" stroke="black" points="270.45,-217.4 165.55,-217.4 165.55,-173.4 270.45,-173.4 270.45,-217.4"/>
+<text xml:space="preserve" text-anchor="middle" x="218" y="-204.4" font-family="Arial" font-size="10.00">Dashboards</text>
+<text xml:space="preserve" text-anchor="middle" x="218" y="-192.4" font-family="Arial" font-size="10.00">Визуализация</text>
+<text xml:space="preserve" text-anchor="middle" x="218" y="-180.4" font-family="Arial" font-size="10.00">метрик и графиков</text>
+</g>
+<!-- login&#45;&gt;dashboards -->
+<g id="edge2" class="edge">
+<title>login-&gt;dashboards</title>
+<path fill="none" stroke="black" d="M222.3,-285.81C222.3,-285.81 222.3,-229.33 222.3,-229.33"/>
+<polygon fill="black" stroke="black" points="225.8,-229.33 222.3,-219.33 218.8,-229.33 225.8,-229.33"/>
+</g>
+<!-- management -->
+<g id="node4" class="node">
+<title>management</title>
+<polygon fill="#ffe0b2" stroke="black" points="423.08,-223.4 320.92,-223.4 320.92,-167.4 423.08,-167.4 423.08,-223.4"/>
+<text xml:space="preserve" text-anchor="middle" x="372" y="-210.4" font-family="Arial" font-size="10.00">Stack Management</text>
+<text xml:space="preserve" text-anchor="middle" x="372" y="-198.4" font-family="Arial" font-size="10.00">Index Patterns</text>
+<text xml:space="preserve" text-anchor="middle" x="372" y="-186.4" font-family="Arial" font-size="10.00">Saved Objects</text>
+<text xml:space="preserve" text-anchor="middle" x="372" y="-174.4" font-family="Arial" font-size="10.00">Advanced Settings</text>
+</g>
+<!-- login&#45;&gt;management -->
+<g id="edge3" class="edge">
+<title>login-&gt;management</title>
+<path fill="none" stroke="black" d="M343.39,-292.88C343.39,-292.88 343.39,-235.25 343.39,-235.25"/>
+<polygon fill="black" stroke="black" points="346.89,-235.25 343.39,-225.25 339.89,-235.25 346.89,-235.25"/>
+</g>
+<!-- devtools -->
+<g id="node5" class="node">
+<title>devtools</title>
+<polygon fill="#ffe0b2" stroke="black" points="580.85,-223.4 473.15,-223.4 473.15,-167.4 580.85,-167.4 580.85,-223.4"/>
+<text xml:space="preserve" text-anchor="middle" x="527" y="-210.4" font-family="Arial" font-size="10.00">Dev Tools</text>
+<text xml:space="preserve" text-anchor="middle" x="527" y="-198.4" font-family="Arial" font-size="10.00">Console (REST API)</text>
+<text xml:space="preserve" text-anchor="middle" x="527" y="-186.4" font-family="Arial" font-size="10.00">Grok Debugger</text>
+<text xml:space="preserve" text-anchor="middle" x="527" y="-174.4" font-family="Arial" font-size="10.00">Search Profiler</text>
+</g>
+<!-- login&#45;&gt;devtools -->
+<g id="edge4" class="edge">
+<title>login-&gt;devtools</title>
+<path fill="none" stroke="black" d="M366.06,-313C439.06,-313 527,-313 527,-313 527,-313 527,-235.38 527,-235.38"/>
+<polygon fill="black" stroke="black" points="530.5,-235.38 527,-225.38 523.5,-235.38 530.5,-235.38"/>
+</g>
+<!-- es -->
+<g id="node6" class="node">
+<title>es</title>
+<path fill="#a5d6a7" stroke="black" d="M338.01,-86C338.01,-89.86 318.73,-93 295,-93 271.27,-93 251.99,-89.86 251.99,-86 251.99,-86 251.99,-23 251.99,-23 251.99,-19.14 271.27,-16 295,-16 318.73,-16 338.01,-19.14 338.01,-23 338.01,-23 338.01,-86 338.01,-86"/>
+<path fill="none" stroke="black" d="M338.01,-86C338.01,-82.14 318.73,-79 295,-79 271.27,-79 251.99,-82.14 251.99,-86"/>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-69.5" font-family="Arial" font-size="10.00">Elasticsearch</text>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-57.5" font-family="Arial" font-size="10.00">REST API</text>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-45.5" font-family="Arial" font-size="10.00">:9200</text>
+<text xml:space="preserve" text-anchor="middle" x="295" y="-33.5" font-family="Arial" font-size="10.00">Индексы: logs-*</text>
+</g>
+<!-- discover&#45;&gt;es -->
+<g id="edge5" class="edge">
+<title>discover-&gt;es</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M66,-166.99C66,-125.96 66,-55 66,-55 66,-55 238.63,-55 238.63,-55"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="238.63,-58.5 248.63,-55 238.63,-51.5 238.63,-58.5"/>
+<text xml:space="preserve" text-anchor="middle" x="116.07" y="-136.8" font-family="Times,serif" font-size="14.00">Search API</text>
+</g>
+<!-- dashboards&#45;&gt;es -->
+<g id="edge6" class="edge">
+<title>dashboards-&gt;es</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M261.22,-173.07C261.22,-173.07 261.22,-104.84 261.22,-104.84"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="264.72,-104.84 261.22,-94.84 257.72,-104.84 264.72,-104.84"/>
+<text xml:space="preserve" text-anchor="middle" x="267.02" y="-136.8" font-family="Times,serif" font-size="14.00">Aggregation API</text>
+</g>
+<!-- management&#45;&gt;es -->
+<g id="edge7" class="edge">
+<title>management-&gt;es</title>
+<path fill="none" stroke="#34a853" d="M329.47,-167.23C329.47,-167.23 329.47,-103.22 329.47,-103.22"/>
+<polygon fill="#34a853" stroke="#34a853" points="332.97,-103.22 329.47,-93.22 325.97,-103.22 332.97,-103.22"/>
+<text xml:space="preserve" text-anchor="middle" x="409.31" y="-136.8" font-family="Times,serif" font-size="14.00">Mapping API</text>
+</g>
+<!-- devtools&#45;&gt;es -->
+<g id="edge8" class="edge">
+<title>devtools-&gt;es</title>
+<path fill="none" stroke="#34a853" d="M527,-166.99C527,-125.96 527,-55 527,-55 527,-55 349.88,-55 349.88,-55"/>
+<polygon fill="#34a853" stroke="#34a853" points="349.88,-51.5 339.88,-55 349.88,-58.5 349.88,-51.5"/>
+<text xml:space="preserve" text-anchor="middle" x="545.14" y="-136.8" font-family="Times,serif" font-size="14.00">REST API</text>
+</g>
+</g>
+</svg>

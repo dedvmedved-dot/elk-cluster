@@ -1,0 +1,172 @@
+<svg width="730pt" height="704pt" viewBox="0.00 0.00 730.00 704.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 700.46)">
+<title>ELK_Architecture</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-700.46 726,-700.46 726,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="361" y="-674.46" font-family="Arial" font-size="20.00">Архитектура ELK Stack</text>
+<g id="clust1" class="cluster">
+<title>cluster_sources</title>
+<polygon fill="#fce8e6" stroke="black" points="218,-556.06 218,-656.46 714,-656.46 714,-556.06 218,-556.06"/>
+<text xml:space="preserve" text-anchor="middle" x="466" y="-640.76" font-family="Arial" font-size="13.00">Источники логов</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_elastic</title>
+<polygon fill="#e6f4ea" stroke="#34a853" points="215,-8 215,-480.66 531,-480.66 531,-8 215,-8"/>
+<text xml:space="preserve" text-anchor="middle" x="373" y="-464.06" font-family="Arial" font-size="14.00">Кластер Elasticsearch</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_kibana</title>
+<polygon fill="#fff3e0" stroke="black" points="37,-176.86 37,-290.46 173,-290.46 173,-176.86 37,-176.86"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-274.76" font-family="Arial" font-size="13.00">Визуализация</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_user</title>
+<polygon fill="#e8f0fe" stroke="black" points="8,-11.34 8,-118.26 202,-118.26 202,-11.34 8,-11.34"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-102.56" font-family="Arial" font-size="13.00">Пользователь</text>
+</g>
+<!-- nginx1 -->
+<g id="node1" class="node">
+<title>nginx1</title>
+<polygon fill="#ffcdd2" stroke="black" points="336.07,-624.86 225.93,-624.86 225.93,-564.06 336.07,-564.06 336.07,-624.86"/>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-610.96" font-family="Arial" font-size="11.00">nginx-1</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-597.76" font-family="Arial" font-size="11.00">192.168.122.107</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-584.56" font-family="Arial" font-size="11.00">Filebeat</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-571.36" font-family="Arial" font-size="11.00">Логи: nginx, syslog</text>
+</g>
+<!-- es1 -->
+<g id="node4" class="node">
+<title>es1</title>
+<polygon fill="#a5d6a7" stroke="black" points="337.9,-447.86 224.1,-447.86 224.1,-373.86 337.9,-373.86 337.9,-447.86"/>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-433.96" font-family="Arial" font-size="11.00">es-node1</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-420.76" font-family="Arial" font-size="11.00">192.168.122.71</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-407.56" font-family="Arial" font-size="11.00">Master Node</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-394.36" font-family="Arial" font-size="11.00">Хранение шардов</text>
+<text xml:space="preserve" text-anchor="middle" x="281" y="-381.16" font-family="Arial" font-size="11.00">Поиск и агрегация</text>
+</g>
+<!-- nginx1&#45;&gt;es1 -->
+<g id="edge4" class="edge">
+<title>nginx1-&gt;es1</title>
+<path fill="none" stroke="#ea4335" d="M281,-563.73C281,-563.73 281,-459.55 281,-459.55"/>
+<polygon fill="#ea4335" stroke="#ea4335" points="284.5,-459.55 281,-449.55 277.5,-459.55 284.5,-459.55"/>
+<text xml:space="preserve" text-anchor="middle" x="316.19" y="-526.46" font-family="Times,serif" font-size="14.00">Отправка</text>
+<text xml:space="preserve" text-anchor="middle" x="316.19" y="-509.66" font-family="Times,serif" font-size="14.00">логов</text>
+<text xml:space="preserve" text-anchor="middle" x="316.19" y="-492.86" font-family="Times,serif" font-size="14.00">HTTP :9200</text>
+</g>
+<!-- nginx2 -->
+<g id="node2" class="node">
+<title>nginx2</title>
+<polygon fill="#ffcdd2" stroke="black" points="504.07,-624.86 393.93,-624.86 393.93,-564.06 504.07,-564.06 504.07,-624.86"/>
+<text xml:space="preserve" text-anchor="middle" x="449" y="-610.96" font-family="Arial" font-size="11.00">nginx-2</text>
+<text xml:space="preserve" text-anchor="middle" x="449" y="-597.76" font-family="Arial" font-size="11.00">192.168.122.182</text>
+<text xml:space="preserve" text-anchor="middle" x="449" y="-584.56" font-family="Arial" font-size="11.00">Filebeat</text>
+<text xml:space="preserve" text-anchor="middle" x="449" y="-571.36" font-family="Arial" font-size="11.00">Логи: nginx, syslog</text>
+</g>
+<!-- es2 -->
+<g id="node5" class="node">
+<title>es2</title>
+<polygon fill="#a5d6a7" stroke="black" points="522.9,-258.86 409.1,-258.86 409.1,-184.86 522.9,-184.86 522.9,-258.86"/>
+<text xml:space="preserve" text-anchor="middle" x="466" y="-244.96" font-family="Arial" font-size="11.00">es-node2</text>
+<text xml:space="preserve" text-anchor="middle" x="466" y="-231.76" font-family="Arial" font-size="11.00">192.168.122.72</text>
+<text xml:space="preserve" text-anchor="middle" x="466" y="-218.56" font-family="Arial" font-size="11.00">Data Node</text>
+<text xml:space="preserve" text-anchor="middle" x="466" y="-205.36" font-family="Arial" font-size="11.00">Хранение шардов</text>
+<text xml:space="preserve" text-anchor="middle" x="466" y="-192.16" font-family="Arial" font-size="11.00">Поиск и агрегация</text>
+</g>
+<!-- nginx2&#45;&gt;es2 -->
+<g id="edge5" class="edge">
+<title>nginx2-&gt;es2</title>
+<path fill="none" stroke="#ea4335" d="M472.42,-563.65C472.42,-563.65 472.42,-270.76 472.42,-270.76"/>
+<polygon fill="#ea4335" stroke="#ea4335" points="475.92,-270.76 472.42,-260.76 468.92,-270.76 475.92,-270.76"/>
+<text xml:space="preserve" text-anchor="middle" x="495.19" y="-423.46" font-family="Times,serif" font-size="14.00">Отправка</text>
+<text xml:space="preserve" text-anchor="middle" x="495.19" y="-406.66" font-family="Times,serif" font-size="14.00">логов</text>
+<text xml:space="preserve" text-anchor="middle" x="495.19" y="-389.86" font-family="Times,serif" font-size="14.00">HTTP :9200</text>
+</g>
+<!-- db1 -->
+<g id="node3" class="node">
+<title>db1</title>
+<polygon fill="#ffcdd2" stroke="black" points="705.89,-624.86 562.11,-624.86 562.11,-564.06 705.89,-564.06 705.89,-624.86"/>
+<text xml:space="preserve" text-anchor="middle" x="634" y="-610.96" font-family="Arial" font-size="11.00">db-1</text>
+<text xml:space="preserve" text-anchor="middle" x="634" y="-597.76" font-family="Arial" font-size="11.00">192.168.122.189</text>
+<text xml:space="preserve" text-anchor="middle" x="634" y="-584.56" font-family="Arial" font-size="11.00">Filebeat</text>
+<text xml:space="preserve" text-anchor="middle" x="634" y="-571.36" font-family="Arial" font-size="11.00">Логи: PostgreSQL, syslog</text>
+</g>
+<!-- es3 -->
+<g id="node6" class="node">
+<title>es3</title>
+<polygon fill="#a5d6a7" stroke="black" points="509.9,-90 396.1,-90 396.1,-16 509.9,-16 509.9,-90"/>
+<text xml:space="preserve" text-anchor="middle" x="453" y="-76.1" font-family="Arial" font-size="11.00">es-node3</text>
+<text xml:space="preserve" text-anchor="middle" x="453" y="-62.9" font-family="Arial" font-size="11.00">192.168.122.73</text>
+<text xml:space="preserve" text-anchor="middle" x="453" y="-49.7" font-family="Arial" font-size="11.00">Data Node</text>
+<text xml:space="preserve" text-anchor="middle" x="453" y="-36.5" font-family="Arial" font-size="11.00">Хранение шардов</text>
+<text xml:space="preserve" text-anchor="middle" x="453" y="-23.3" font-family="Arial" font-size="11.00">Поиск и агрегация</text>
+</g>
+<!-- db1&#45;&gt;es3 -->
+<g id="edge6" class="edge">
+<title>db1-&gt;es3</title>
+<path fill="none" stroke="#ea4335" d="M634,-563.8C634,-449.25 634,-53 634,-53 634,-53 521.78,-53 521.78,-53"/>
+<polygon fill="#ea4335" stroke="#ea4335" points="521.78,-49.5 511.78,-53 521.78,-56.5 521.78,-49.5"/>
+<text xml:space="preserve" text-anchor="middle" x="661.19" y="-336.26" font-family="Times,serif" font-size="14.00">Отправка</text>
+<text xml:space="preserve" text-anchor="middle" x="661.19" y="-319.46" font-family="Times,serif" font-size="14.00">логов</text>
+<text xml:space="preserve" text-anchor="middle" x="661.19" y="-302.66" font-family="Times,serif" font-size="14.00">HTTP :9200</text>
+</g>
+<!-- es1&#45;&gt;es2 -->
+<g id="edge1" class="edge">
+<title>es1-&gt;es2</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M351.25,-423C351.25,-423 440.76,-423 440.76,-423 440.76,-423 440.76,-272.25 440.76,-272.25"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="351.25,-419.5 341.25,-423 351.25,-426.5 351.25,-419.5"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="444.26,-272.25 440.76,-262.25 437.26,-272.25 444.26,-272.25"/>
+<text xml:space="preserve" text-anchor="middle" x="385" y="-327.86" font-family="Times,serif" font-size="14.00">Репликация</text>
+<text xml:space="preserve" text-anchor="middle" x="385" y="-311.06" font-family="Times,serif" font-size="14.00">шардов</text>
+</g>
+<!-- kibana -->
+<g id="node7" class="node">
+<title>kibana</title>
+<polygon fill="#ffe0b2" stroke="black" points="164.99,-258.86 45.01,-258.86 45.01,-184.86 164.99,-184.86 164.99,-258.86"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-244.96" font-family="Arial" font-size="11.00">Kibana</text>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-231.76" font-family="Arial" font-size="11.00">192.168.122.60:5601</text>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-218.56" font-family="Arial" font-size="11.00">Дашборды</text>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-205.36" font-family="Arial" font-size="11.00">Визуализация</text>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-192.16" font-family="Arial" font-size="11.00">Поиск по логам</text>
+</g>
+<!-- es1&#45;&gt;kibana -->
+<g id="edge7" class="edge">
+<title>es1-&gt;kibana</title>
+<path fill="none" stroke="#fb8c00" stroke-width="2" d="M281,-373.55C281,-318.51 281,-222 281,-222 281,-222 178.1,-222 178.1,-222"/>
+<polygon fill="#fb8c00" stroke="#fb8c00" stroke-width="2" points="178.1,-218.5 168.1,-222 178.1,-225.5 178.1,-218.5"/>
+<text xml:space="preserve" text-anchor="middle" x="189.94" y="-327.86" font-family="Times,serif" font-size="14.00">API</text>
+<text xml:space="preserve" text-anchor="middle" x="189.94" y="-311.06" font-family="Times,serif" font-size="14.00">:9200</text>
+</g>
+<!-- es2&#45;&gt;es3 -->
+<g id="edge2" class="edge">
+<title>es2-&gt;es3</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M459.5,-171.36C459.5,-171.36 459.5,-103.4 459.5,-103.4"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="456,-171.36 459.5,-181.36 463,-171.36 456,-171.36"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="463,-103.4 459.5,-93.4 456,-103.4 463,-103.4"/>
+<text xml:space="preserve" text-anchor="middle" x="488" y="-147.26" font-family="Times,serif" font-size="14.00">Репликация</text>
+<text xml:space="preserve" text-anchor="middle" x="488" y="-130.46" font-family="Times,serif" font-size="14.00">шардов</text>
+</g>
+<!-- es3&#45;&gt;es1 -->
+<g id="edge3" class="edge">
+<title>es3-&gt;es1</title>
+<path fill="none" stroke="#34a853" stroke-width="2" d="M402.6,-103.38C402.6,-103.38 402.6,-399 402.6,-399 402.6,-399 351.27,-399 351.27,-399"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="406.1,-103.38 402.6,-93.38 399.1,-103.38 406.1,-103.38"/>
+<polygon fill="#34a853" stroke="#34a853" stroke-width="2" points="351.27,-395.5 341.27,-399 351.27,-402.5 351.27,-395.5"/>
+<text xml:space="preserve" text-anchor="middle" x="316" y="-226.06" font-family="Times,serif" font-size="14.00">Репликация</text>
+<text xml:space="preserve" text-anchor="middle" x="316" y="-209.26" font-family="Times,serif" font-size="14.00">шардов</text>
+</g>
+<!-- user -->
+<g id="node8" class="node">
+<title>user</title>
+<ellipse fill="#bbdefb" stroke="black" cx="105" cy="-53" rx="89.11" ry="33.66"/>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-62.9" font-family="Arial" font-size="11.00">DevOps/Разработчик</text>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-49.7" font-family="Arial" font-size="11.00">Браузер</text>
+<text xml:space="preserve" text-anchor="middle" x="105" y="-36.5" font-family="Arial" font-size="11.00">Анализ логов</text>
+</g>
+<!-- kibana&#45;&gt;user -->
+<g id="edge8" class="edge">
+<title>kibana-&gt;user</title>
+<path fill="none" stroke="#4285f4" stroke-width="2" d="M105,-184.38C105,-184.38 105,-99.96 105,-99.96"/>
+<polygon fill="#4285f4" stroke="#4285f4" stroke-width="2" points="108.5,-99.96 105,-89.96 101.5,-99.96 108.5,-99.96"/>
+<text xml:space="preserve" text-anchor="middle" x="122.5" y="-147.26" font-family="Times,serif" font-size="14.00">HTTP</text>
+<text xml:space="preserve" text-anchor="middle" x="122.5" y="-130.46" font-family="Times,serif" font-size="14.00">:5601</text>
+</g>
+</g>
+</svg>

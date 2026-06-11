@@ -1,0 +1,67 @@
+<svg width="977pt" height="78pt" viewBox="0.00 0.00 977.00 78.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 74)">
+<title>KQL_Examples</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-74 973.44,-74 973.44,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="484.72" y="-49.8" font-family="Arial" font-size="18.00">Примеры KQL-запросов</text>
+<!-- q1 -->
+<g id="node1" class="node">
+<title>q1</title>
+<polygon fill="#ffcdd2" stroke="black" points="131.54,-40.4 0,-40.4 0,0 137.54,0 137.54,-34.4 131.54,-40.4"/>
+<polyline fill="none" stroke="black" points="131.54,-40.4 131.54,-34.4"/>
+<polyline fill="none" stroke="black" points="137.54,-34.4 131.54,-34.4"/>
+<text xml:space="preserve" text-anchor="middle" x="68.77" y="-28.3" font-family="Arial" font-size="9.00">Поиск ошибок:</text>
+<text xml:space="preserve" text-anchor="middle" x="68.77" y="-17.5" font-family="Arial" font-size="9.00">nginx AND error</text>
+<text xml:space="preserve" text-anchor="middle" x="68.77" y="-6.7" font-family="Arial" font-size="9.00">→ все логи nginx с ошибками</text>
+</g>
+<!-- q2 -->
+<g id="node2" class="node">
+<title>q2</title>
+<polygon fill="#ffcdd2" stroke="black" points="292.78,-40.4 180.75,-40.4 180.75,0 298.78,0 298.78,-34.4 292.78,-40.4"/>
+<polyline fill="none" stroke="black" points="292.78,-40.4 292.78,-34.4"/>
+<polyline fill="none" stroke="black" points="298.78,-34.4 292.78,-34.4"/>
+<text xml:space="preserve" text-anchor="middle" x="239.77" y="-28.3" font-family="Arial" font-size="9.00">Фильтр по серверу:</text>
+<text xml:space="preserve" text-anchor="middle" x="239.77" y="-17.5" font-family="Arial" font-size="9.00">host.name: "nginx-1"</text>
+<text xml:space="preserve" text-anchor="middle" x="239.77" y="-6.7" font-family="Arial" font-size="9.00">→ только логи с nginx-1</text>
+</g>
+<!-- q3 -->
+<g id="node3" class="node">
+<title>q3</title>
+<polygon fill="#ffcdd2" stroke="black" points="427.27,-40.4 342.26,-40.4 342.26,0 433.27,0 433.27,-34.4 427.27,-40.4"/>
+<polyline fill="none" stroke="black" points="427.27,-40.4 427.27,-34.4"/>
+<polyline fill="none" stroke="black" points="433.27,-34.4 427.27,-34.4"/>
+<text xml:space="preserve" text-anchor="middle" x="387.77" y="-28.3" font-family="Arial" font-size="9.00">Фильтр по тегам:</text>
+<text xml:space="preserve" text-anchor="middle" x="387.77" y="-17.5" font-family="Arial" font-size="9.00">tags: "postgresql"</text>
+<text xml:space="preserve" text-anchor="middle" x="387.77" y="-6.7" font-family="Arial" font-size="9.00">→ только логи БД</text>
+</g>
+<!-- q4 -->
+<g id="node4" class="node">
+<title>q4</title>
+<polygon fill="#ffcdd2" stroke="black" points="613.53,-40.4 476.01,-40.4 476.01,0 619.53,0 619.53,-34.4 613.53,-40.4"/>
+<polyline fill="none" stroke="black" points="613.53,-40.4 613.53,-34.4"/>
+<polyline fill="none" stroke="black" points="619.53,-34.4 613.53,-34.4"/>
+<text xml:space="preserve" text-anchor="middle" x="547.77" y="-28.3" font-family="Arial" font-size="9.00">Исключение:</text>
+<text xml:space="preserve" text-anchor="middle" x="547.77" y="-17.5" font-family="Arial" font-size="9.00">NOT system</text>
+<text xml:space="preserve" text-anchor="middle" x="547.77" y="-6.7" font-family="Arial" font-size="9.00">→ всё кроме системных логов</text>
+</g>
+<!-- q5 -->
+<g id="node5" class="node">
+<title>q5</title>
+<polygon fill="#ffcdd2" stroke="black" points="762.78,-40.4 662.75,-40.4 662.75,0 768.78,0 768.78,-34.4 762.78,-40.4"/>
+<polyline fill="none" stroke="black" points="762.78,-40.4 762.78,-34.4"/>
+<polyline fill="none" stroke="black" points="768.78,-34.4 762.78,-34.4"/>
+<text xml:space="preserve" text-anchor="middle" x="715.77" y="-28.3" font-family="Arial" font-size="9.00">HTTP статусы:</text>
+<text xml:space="preserve" text-anchor="middle" x="715.77" y="-17.5" font-family="Arial" font-size="9.00">response: 500</text>
+<text xml:space="preserve" text-anchor="middle" x="715.77" y="-6.7" font-family="Arial" font-size="9.00">→ только ошибки 500</text>
+</g>
+<!-- q6 -->
+<g id="node6" class="node">
+<title>q6</title>
+<polygon fill="#ffcdd2" stroke="black" points="963.44,-40.4 812.09,-40.4 812.09,0 969.44,0 969.44,-34.4 963.44,-40.4"/>
+<polyline fill="none" stroke="black" points="963.44,-40.4 963.44,-34.4"/>
+<polyline fill="none" stroke="black" points="969.44,-34.4 963.44,-34.4"/>
+<text xml:space="preserve" text-anchor="middle" x="890.77" y="-28.3" font-family="Arial" font-size="9.00">Диапазон:</text>
+<text xml:space="preserve" text-anchor="middle" x="890.77" y="-17.5" font-family="Arial" font-size="9.00">@timestamp &gt; "2026-06-10T15:00"</text>
+<text xml:space="preserve" text-anchor="middle" x="890.77" y="-6.7" font-family="Arial" font-size="9.00">→ логи после 15:00</text>
+</g>
+</g>
+</svg>

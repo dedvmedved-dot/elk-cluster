@@ -1,0 +1,112 @@
+<svg width="451pt" height="454pt" viewBox="0.00 0.00 451.00 454.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 450.05)">
+<title>KibanaFlow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-450.05 446.61,-450.05 446.61,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="221.31" y="-424.05" font-family="Arial" font-size="20.00">Архитектура Kibana</text>
+<g id="clust1" class="cluster">
+<title>cluster_features</title>
+<polygon fill="#fff3e0" stroke="black" points="8,-121.8 8,-216.2 414,-216.2 414,-121.8 8,-121.8"/>
+<text xml:space="preserve" text-anchor="middle" x="211" y="-201.4" font-family="Arial" font-size="12.00">Возможности Kibana</text>
+</g>
+<!-- user -->
+<g id="node1" class="node">
+<title>user</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="226" cy="-391.43" rx="58.46" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-394.43" font-family="Arial" font-size="10.00">Пользователь</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-382.43" font-family="Arial" font-size="10.00">Браузер</text>
+</g>
+<!-- kibana -->
+<g id="node2" class="node">
+<title>kibana</title>
+<polygon fill="#ffe0b2" stroke="black" points="281.27,-299.2 170.73,-299.2 170.73,-243.2 281.27,-243.2 281.27,-299.2"/>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-286.2" font-family="Arial" font-size="10.00">Kibana Server</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-274.2" font-family="Arial" font-size="10.00">192.168.122.60:5601</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-262.2" font-family="Arial" font-size="10.00">Node.js приложение</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-250.2" font-family="Arial" font-size="10.00">REST API клиент</text>
+</g>
+<!-- user&#45;&gt;kibana -->
+<g id="edge1" class="edge">
+<title>user-&gt;kibana</title>
+<path fill="none" stroke="#4285f4" stroke-width="2" d="M226,-368.53C226,-368.53 226,-312.55 226,-312.55"/>
+<polygon fill="#4285f4" stroke="#4285f4" stroke-width="2" points="229.5,-312.55 226,-302.55 222.5,-312.55 229.5,-312.55"/>
+<text xml:space="preserve" text-anchor="middle" x="255.75" y="-338.2" font-family="Times,serif" font-size="14.00">HTTP</text>
+<text xml:space="preserve" text-anchor="middle" x="255.75" y="-321.4" font-family="Times,serif" font-size="14.00">порт 5601</text>
+</g>
+<!-- discover -->
+<g id="node3" class="node">
+<title>discover</title>
+<polygon fill="#ffe0b2" stroke="black" points="126.23,-185.8 15.77,-185.8 15.77,-129.8 126.23,-129.8 126.23,-185.8"/>
+<text xml:space="preserve" text-anchor="middle" x="71" y="-172.8" font-family="Arial" font-size="10.00">Discover</text>
+<text xml:space="preserve" text-anchor="middle" x="71" y="-160.8" font-family="Arial" font-size="10.00">Поиск и фильтрация</text>
+<text xml:space="preserve" text-anchor="middle" x="71" y="-148.8" font-family="Arial" font-size="10.00">логов в реальном</text>
+<text xml:space="preserve" text-anchor="middle" x="71" y="-136.8" font-family="Arial" font-size="10.00">времени</text>
+</g>
+<!-- kibana&#45;&gt;discover -->
+<g id="edge2" class="edge">
+<title>kibana-&gt;discover</title>
+<path fill="none" stroke="black" d="M170.48,-271C126,-271 71,-271 71,-271 71,-271 71,-197.59 71,-197.59"/>
+<polygon fill="black" stroke="black" points="74.5,-197.59 71,-187.59 67.5,-197.59 74.5,-197.59"/>
+</g>
+<!-- dashboards -->
+<g id="node4" class="node">
+<title>dashboards</title>
+<polygon fill="#ffe0b2" stroke="black" points="275.67,-185.8 176.33,-185.8 176.33,-129.8 275.67,-129.8 275.67,-185.8"/>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-172.8" font-family="Arial" font-size="10.00">Dashboards</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-160.8" font-family="Arial" font-size="10.00">Визуализация</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-148.8" font-family="Arial" font-size="10.00">метрик и логов</text>
+<text xml:space="preserve" text-anchor="middle" x="226" y="-136.8" font-family="Arial" font-size="10.00">Графики, таблицы</text>
+</g>
+<!-- kibana&#45;&gt;dashboards -->
+<g id="edge3" class="edge">
+<title>kibana-&gt;dashboards</title>
+<path fill="none" stroke="black" d="M226,-242.88C226,-242.88 226,-197.67 226,-197.67"/>
+<polygon fill="black" stroke="black" points="229.5,-197.67 226,-187.67 222.5,-197.67 229.5,-197.67"/>
+</g>
+<!-- index_patterns -->
+<g id="node5" class="node">
+<title>index_patterns</title>
+<polygon fill="#ffe0b2" stroke="black" points="406.24,-185.8 325.76,-185.8 325.76,-129.8 406.24,-129.8 406.24,-185.8"/>
+<text xml:space="preserve" text-anchor="middle" x="366" y="-172.8" font-family="Arial" font-size="10.00">Index Patterns</text>
+<text xml:space="preserve" text-anchor="middle" x="366" y="-160.8" font-family="Arial" font-size="10.00">logs-*</text>
+<text xml:space="preserve" text-anchor="middle" x="366" y="-148.8" font-family="Arial" font-size="10.00">Привязка к</text>
+<text xml:space="preserve" text-anchor="middle" x="366" y="-136.8" font-family="Arial" font-size="10.00">индексам ES</text>
+</g>
+<!-- kibana&#45;&gt;index_patterns -->
+<g id="edge4" class="edge">
+<title>kibana-&gt;index_patterns</title>
+<path fill="none" stroke="black" d="M281.73,-271C320.78,-271 366,-271 366,-271 366,-271 366,-197.59 366,-197.59"/>
+<polygon fill="black" stroke="black" points="369.5,-197.59 366,-187.59 362.5,-197.59 369.5,-197.59"/>
+</g>
+<!-- es -->
+<g id="node6" class="node">
+<title>es</title>
+<path fill="#a5d6a7" stroke="black" d="M267.45,-70C267.45,-73.86 243.94,-77 215,-77 186.06,-77 162.55,-73.86 162.55,-70 162.55,-70 162.55,-7 162.55,-7 162.55,-3.14 186.06,0 215,0 243.94,0 267.45,-3.14 267.45,-7 267.45,-7 267.45,-70 267.45,-70"/>
+<path fill="none" stroke="black" d="M267.45,-70C267.45,-66.14 243.94,-63 215,-63 186.06,-63 162.55,-66.14 162.55,-70"/>
+<text xml:space="preserve" text-anchor="middle" x="215" y="-53.5" font-family="Arial" font-size="10.00">Elasticsearch</text>
+<text xml:space="preserve" text-anchor="middle" x="215" y="-41.5" font-family="Arial" font-size="10.00">:9200</text>
+<text xml:space="preserve" text-anchor="middle" x="215" y="-29.5" font-family="Arial" font-size="10.00">REST API</text>
+<text xml:space="preserve" text-anchor="middle" x="215" y="-17.5" font-family="Arial" font-size="10.00">Поиск и агрегация</text>
+</g>
+<!-- discover&#45;&gt;es -->
+<g id="edge5" class="edge">
+<title>discover-&gt;es</title>
+<path fill="none" stroke="#34a853" d="M71,-129.34C71,-94.2 71,-39 71,-39 71,-39 150.68,-39 150.68,-39"/>
+<polygon fill="#34a853" stroke="#34a853" points="150.68,-42.5 160.68,-39 150.68,-35.5 150.68,-42.5"/>
+<text xml:space="preserve" text-anchor="middle" x="116.07" y="-99.2" font-family="Times,serif" font-size="14.00">Search API</text>
+</g>
+<!-- dashboards&#45;&gt;es -->
+<g id="edge6" class="edge">
+<title>dashboards-&gt;es</title>
+<path fill="none" stroke="#34a853" d="M221.89,-129.53C221.89,-129.53 221.89,-88.91 221.89,-88.91"/>
+<polygon fill="#34a853" stroke="#34a853" points="225.39,-88.91 221.89,-78.91 218.39,-88.91 225.39,-88.91"/>
+<text xml:space="preserve" text-anchor="middle" x="263.02" y="-99.2" font-family="Times,serif" font-size="14.00">Aggregation API</text>
+</g>
+<!-- index_patterns&#45;&gt;es -->
+<g id="edge7" class="edge">
+<title>index_patterns-&gt;es</title>
+<path fill="none" stroke="#34a853" d="M366,-129.34C366,-94.2 366,-39 366,-39 366,-39 279.33,-39 279.33,-39"/>
+<polygon fill="#34a853" stroke="#34a853" points="279.33,-35.5 269.33,-39 279.33,-42.5 279.33,-35.5"/>
+<text xml:space="preserve" text-anchor="middle" x="404.31" y="-99.2" font-family="Times,serif" font-size="14.00">Mapping API</text>
+</g>
+</g>
+</svg>

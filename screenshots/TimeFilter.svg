@@ -1,0 +1,84 @@
+<svg width="632pt" height="235pt" viewBox="0.00 0.00 632.00 235.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 230.85)">
+<title>TimeFilter</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-230.85 628.3,-230.85 628.3,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="312.15" y="-206.65" font-family="Arial" font-size="18.00">Фильтрация по времени в Kibana</text>
+<!-- time_picker -->
+<g id="node1" class="node">
+<title>time_picker</title>
+<ellipse fill="#e8f0fe" stroke="black" cx="306.67" cy="-174.63" rx="92.64" ry="22.63"/>
+<text xml:space="preserve" text-anchor="middle" x="306.67" y="-177.63" font-family="Arial" font-size="10.00">Time Picker</text>
+<text xml:space="preserve" text-anchor="middle" x="306.67" y="-165.63" font-family="Arial" font-size="10.00">(в правом верхнем углу)</text>
+</g>
+<!-- presets -->
+<g id="node2" class="node">
+<title>presets</title>
+<polygon fill="#fff3e0" stroke="black" points="99.35,-98 0,-98 0,-18 99.35,-18 99.35,-98"/>
+<text xml:space="preserve" text-anchor="middle" x="49.67" y="-85" font-family="Arial" font-size="10.00">Быстрые периоды:</text>
+<text xml:space="preserve" text-anchor="middle" x="49.67" y="-73" font-family="Arial" font-size="10.00">• Last 15 minutes</text>
+<text xml:space="preserve" text-anchor="middle" x="49.67" y="-61" font-family="Arial" font-size="10.00">• Last 1 hour</text>
+<text xml:space="preserve" text-anchor="middle" x="49.67" y="-49" font-family="Arial" font-size="10.00">• Last 24 hours</text>
+<text xml:space="preserve" text-anchor="middle" x="49.67" y="-37" font-family="Arial" font-size="10.00">• Today</text>
+<text xml:space="preserve" text-anchor="middle" x="49.67" y="-25" font-family="Arial" font-size="10.00">• This week</text>
+</g>
+<!-- time_picker&#45;&gt;presets -->
+<g id="edge1" class="edge">
+<title>time_picker-&gt;presets</title>
+<path fill="none" stroke="black" d="M237.41,-159.47C237.41,-135.62 237.41,-92 237.41,-92 237.41,-92 111,-92 111,-92"/>
+<polygon fill="black" stroke="black" points="111,-88.5 101,-92 111,-95.5 111,-88.5"/>
+</g>
+<!-- absolute -->
+<g id="node3" class="node">
+<title>absolute</title>
+<polygon fill="#fff3e0" stroke="black" points="284.15,-86 149.2,-86 149.2,-30 284.15,-30 284.15,-86"/>
+<text xml:space="preserve" text-anchor="middle" x="216.67" y="-73" font-family="Arial" font-size="10.00">Абсолютный период:</text>
+<text xml:space="preserve" text-anchor="middle" x="216.67" y="-61" font-family="Arial" font-size="10.00">• From: 2026-06-10 12:00</text>
+<text xml:space="preserve" text-anchor="middle" x="216.67" y="-49" font-family="Arial" font-size="10.00">• To:   2026-06-10 15:00</text>
+<text xml:space="preserve" text-anchor="middle" x="216.67" y="-37" font-family="Arial" font-size="10.00">→ логи за 3 часа</text>
+</g>
+<!-- time_picker&#45;&gt;absolute -->
+<g id="edge2" class="edge">
+<title>time_picker-&gt;absolute</title>
+<path fill="none" stroke="black" d="M260.78,-154.58C260.78,-154.58 260.78,-97.59 260.78,-97.59"/>
+<polygon fill="black" stroke="black" points="264.28,-97.59 260.78,-87.59 257.28,-97.59 264.28,-97.59"/>
+</g>
+<!-- relative -->
+<g id="node4" class="node">
+<title>relative</title>
+<polygon fill="#fff3e0" stroke="black" points="461.24,-116 334.11,-116 334.11,0 461.24,0 461.24,-116"/>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-103" font-family="Arial" font-size="10.00">Относительный период:</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-91" font-family="Arial" font-size="10.00">• 30 minutes ago</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-79" font-family="Arial" font-size="10.00">  to now</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-67" font-family="Arial" font-size="10.00">→ последние 30 минут</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-43" font-family="Arial" font-size="10.00">• 1 hour ago</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-31" font-family="Arial" font-size="10.00">  to 30 minutes ago</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-19" font-family="Arial" font-size="10.00">→ логи за конкретный</text>
+<text xml:space="preserve" text-anchor="middle" x="397.67" y="-7" font-family="Arial" font-size="10.00">  час в прошлом</text>
+</g>
+<!-- time_picker&#45;&gt;relative -->
+<g id="edge3" class="edge">
+<title>time_picker-&gt;relative</title>
+<path fill="none" stroke="black" d="M366.71,-157.17C366.71,-157.17 366.71,-127.91 366.71,-127.91"/>
+<polygon fill="black" stroke="black" points="370.21,-127.91 366.71,-117.91 363.21,-127.91 370.21,-127.91"/>
+</g>
+<!-- autorefresh -->
+<g id="node5" class="node">
+<title>autorefresh</title>
+<polygon fill="#e6f4ea" stroke="black" points="624.3,-110 511.05,-110 511.05,-6 624.3,-6 624.3,-110"/>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-97" font-family="Arial" font-size="10.00">Автообновление:</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-85" font-family="Arial" font-size="10.00">• Off (вручную)</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-73" font-family="Arial" font-size="10.00">• 5 seconds</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-61" font-family="Arial" font-size="10.00">• 30 seconds</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-49" font-family="Arial" font-size="10.00">• 1 minute</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-37" font-family="Arial" font-size="10.00">→ логи обновляются</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-25" font-family="Arial" font-size="10.00">  автоматически</text>
+<text xml:space="preserve" text-anchor="middle" x="567.67" y="-13" font-family="Arial" font-size="10.00">  (как tail -f)</text>
+</g>
+<!-- time_picker&#45;&gt;autorefresh -->
+<g id="edge4" class="edge">
+<title>time_picker-&gt;autorefresh</title>
+<path fill="none" stroke="black" d="M399.8,-175C474.75,-175 567.67,-175 567.67,-175 567.67,-175 567.67,-121.85 567.67,-121.85"/>
+<polygon fill="black" stroke="black" points="571.17,-121.85 567.67,-111.85 564.17,-121.85 571.17,-121.85"/>
+</g>
+</g>
+</svg>

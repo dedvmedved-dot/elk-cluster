@@ -1,0 +1,129 @@
+<svg width="420pt" height="739pt" viewBox="0.00 0.00 420.00 739.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 735)">
+<title>LogJourney</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-735 415.67,-735 415.67,4 -4,4"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-709" font-family="Arial" font-size="20.00">Путь лога от источника до экрана Kibana</text>
+<!-- step1 -->
+<g id="node1" class="node">
+<title>step1</title>
+<polygon fill="#fce8e6" stroke="black" points="256.57,-699 155.1,-699 155.1,-647.8 256.57,-647.8 256.57,-699"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-686.9" font-family="Arial" font-size="9.00">1. Генерация</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-676.1" font-family="Arial" font-size="9.00">Nginx записывает</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-665.3" font-family="Arial" font-size="9.00">access.log:</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-654.5" font-family="Arial" font-size="9.00">'GET /index.html 200'</text>
+</g>
+<!-- step2 -->
+<g id="node2" class="node">
+<title>step2</title>
+<polygon fill="#ffcdd2" stroke="black" points="252.34,-618.8 159.33,-618.8 159.33,-556.8 252.34,-556.8 252.34,-618.8"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-606.7" font-family="Arial" font-size="9.00">2. Чтение</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-595.9" font-family="Arial" font-size="9.00">Filebeat читает</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-585.1" font-family="Arial" font-size="9.00">лог-файл (inode)</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-574.3" font-family="Arial" font-size="9.00">Обновляет registry</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-563.5" font-family="Arial" font-size="9.00">(позиция в файле)</text>
+</g>
+<!-- step1&#45;&gt;step2 -->
+<g id="edge1" class="edge">
+<title>step1-&gt;step2</title>
+<path fill="none" stroke="black" d="M205.84,-647.72C205.84,-647.72 205.84,-630.73 205.84,-630.73"/>
+<polygon fill="black" stroke="black" points="209.34,-630.73 205.84,-620.73 202.34,-630.73 209.34,-630.73"/>
+</g>
+<!-- step3 -->
+<g id="node3" class="node">
+<title>step3</title>
+<polygon fill="#fff3e0" stroke="black" points="258.6,-527.8 153.07,-527.8 153.07,-465.8 258.6,-465.8 258.6,-527.8"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-515.7" font-family="Arial" font-size="9.00">3. Буферизация</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-504.9" font-family="Arial" font-size="9.00">Filebeat накапливает</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-494.1" font-family="Arial" font-size="9.00">события в буфере</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-483.3" font-family="Arial" font-size="9.00">(до 2048 событий</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-472.5" font-family="Arial" font-size="9.00">или 5 секунд)</text>
+</g>
+<!-- step2&#45;&gt;step3 -->
+<g id="edge2" class="edge">
+<title>step2-&gt;step3</title>
+<path fill="none" stroke="black" d="M205.84,-556.48C205.84,-556.48 205.84,-539.69 205.84,-539.69"/>
+<polygon fill="black" stroke="black" points="209.34,-539.69 205.84,-529.69 202.34,-539.69 209.34,-539.69"/>
+</g>
+<!-- step4 -->
+<g id="node4" class="node">
+<title>step4</title>
+<polygon fill="#ffe0b2" stroke="black" points="244.84,-436.8 166.83,-436.8 166.83,-374.8 244.84,-374.8 244.84,-436.8"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-424.7" font-family="Arial" font-size="9.00">4. Отправка</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-413.9" font-family="Arial" font-size="9.00">HTTP POST</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-403.1" font-family="Arial" font-size="9.00">/_bulk API</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-392.3" font-family="Arial" font-size="9.00">Сжатие gzip</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-381.5" font-family="Arial" font-size="9.00">Отправка в ES</text>
+</g>
+<!-- step3&#45;&gt;step4 -->
+<g id="edge3" class="edge">
+<title>step3-&gt;step4</title>
+<path fill="none" stroke="black" d="M205.84,-465.48C205.84,-465.48 205.84,-448.69 205.84,-448.69"/>
+<polygon fill="black" stroke="black" points="209.34,-448.69 205.84,-438.69 202.34,-448.69 209.34,-448.69"/>
+</g>
+<!-- step5 -->
+<g id="node5" class="node">
+<title>step5</title>
+<polygon fill="#e6f4ea" stroke="black" points="259.09,-345.8 152.58,-345.8 152.58,-273 259.09,-273 259.09,-345.8"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-333.7" font-family="Arial" font-size="9.00">5. Индексация</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-322.9" font-family="Arial" font-size="9.00">Elasticsearch:</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-312.1" font-family="Arial" font-size="9.00">- Парсит JSON</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-301.3" font-family="Arial" font-size="9.00">- Применяет mapping</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-290.5" font-family="Arial" font-size="9.00">- Разбивает на шарды</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-279.7" font-family="Arial" font-size="9.00">- Создаёт реплики</text>
+</g>
+<!-- step4&#45;&gt;step5 -->
+<g id="edge4" class="edge">
+<title>step4-&gt;step5</title>
+<path fill="none" stroke="black" d="M205.84,-374.5C205.84,-374.5 205.84,-357.76 205.84,-357.76"/>
+<polygon fill="black" stroke="black" points="209.34,-357.76 205.84,-347.76 202.34,-357.76 209.34,-357.76"/>
+</g>
+<!-- step6 -->
+<g id="node6" class="node">
+<title>step6</title>
+<polygon fill="#a5d6a7" stroke="black" points="263.36,-244 148.31,-244 148.31,-182 263.36,-182 263.36,-244"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-231.9" font-family="Arial" font-size="9.00">6. Хранение</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-221.1" font-family="Arial" font-size="9.00">Шард P0 → es-node1</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-210.3" font-family="Arial" font-size="9.00">Реплика R0 → es-node2</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-199.5" font-family="Arial" font-size="9.00">Данные защищены</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-188.7" font-family="Arial" font-size="9.00">от отказа ноды</text>
+</g>
+<!-- step5&#45;&gt;step6 -->
+<g id="edge5" class="edge">
+<title>step5-&gt;step6</title>
+<path fill="none" stroke="black" d="M205.84,-272.68C205.84,-272.68 205.84,-255.79 205.84,-255.79"/>
+<polygon fill="black" stroke="black" points="209.34,-255.79 205.84,-245.79 202.34,-255.79 209.34,-255.79"/>
+</g>
+<!-- step7 -->
+<g id="node7" class="node">
+<title>step7</title>
+<polygon fill="#e8f0fe" stroke="black" points="257.6,-153 154.08,-153 154.08,-91 257.6,-91 257.6,-153"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-140.9" font-family="Arial" font-size="9.00">7. Поиск</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-130.1" font-family="Arial" font-size="9.00">Kibana отправляет</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-119.3" font-family="Arial" font-size="9.00">Search API запрос</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-108.5" font-family="Arial" font-size="9.00">ES ищет по всем</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-97.7" font-family="Arial" font-size="9.00">шардам параллельно</text>
+</g>
+<!-- step6&#45;&gt;step7 -->
+<g id="edge6" class="edge">
+<title>step6-&gt;step7</title>
+<path fill="none" stroke="black" d="M205.84,-181.68C205.84,-181.68 205.84,-164.89 205.84,-164.89"/>
+<polygon fill="black" stroke="black" points="209.34,-164.89 205.84,-154.89 202.34,-164.89 209.34,-164.89"/>
+</g>
+<!-- step8 -->
+<g id="node8" class="node">
+<title>step8</title>
+<polygon fill="#bbdefb" stroke="black" points="254.1,-62 157.57,-62 157.57,0 254.1,0 254.1,-62"/>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-49.9" font-family="Arial" font-size="9.00">8. Визуализация</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-39.1" font-family="Arial" font-size="9.00">Kibana отображает</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-28.3" font-family="Arial" font-size="9.00">логи в Discover</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-17.5" font-family="Arial" font-size="9.00">Фильтры, поиск,</text>
+<text xml:space="preserve" text-anchor="middle" x="205.84" y="-6.7" font-family="Arial" font-size="9.00">дашборды</text>
+</g>
+<!-- step7&#45;&gt;step8 -->
+<g id="edge7" class="edge">
+<title>step7-&gt;step8</title>
+<path fill="none" stroke="black" d="M205.84,-90.68C205.84,-90.68 205.84,-73.89 205.84,-73.89"/>
+<polygon fill="black" stroke="black" points="209.34,-73.89 205.84,-63.89 202.34,-73.89 209.34,-73.89"/>
+</g>
+</g>
+</svg>
